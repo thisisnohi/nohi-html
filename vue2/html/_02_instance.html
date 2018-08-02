@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="../static/module/vue2/vue_v2.5.16.js"></script>
+</head>
+<body>
+<h1>实例</h1>
+<h2>数据与方法</h2>
+<div id="app">
+    <p>{{ foo }}</p>
+    <!-- 这里的 `foo` 不会更新！ -->
+    <button v-on:click="foo = 'baz'">Change it</button>
+</div>
+<div id="app2">
+    <p>{{ a }}</p>
+    <!-- 这里的 `foo` 不会更新！ -->
+    <button v-on:click="a = 'aaa'">Change it</button>
+</div>
+
+<script>
+    var obj = {
+        foo: 'bar'
+    }
+
+    Object.freeze(obj)
+
+    var app = new Vue({
+        el: '#app',
+        data: obj
+    });
+
+    var data = { a: 1 }
+    var vm = new Vue({
+        el: '#app2',
+        data: data
+    })
+
+    console.info('vm.$data === data:' + (vm.$data === data)); // => true
+    console.info("vm.$el === document.getElementById('example'):" + (vm.$el === document.getElementById('app2'))); // => true
+
+    // $watch 是一个实例方法
+    vm.$watch('a', function (newValue, oldValue) {
+        // 这个回调将在 `vm.a` 改变后调用
+        console.info('newValue:' + newValue + ",oldValue:" + oldValue)
+    })
+
+</script>
+</body>
+</html>
