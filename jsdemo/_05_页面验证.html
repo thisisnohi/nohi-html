@@ -1,0 +1,104 @@
+<html>
+<head >
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>页面验证、控制</title>
+</head>
+<body>
+    <h1>页面验证、控制</h1>
+    <form>
+        姓名:<input type="text" id="name" name="name" value=""><br>
+        年龄:<input type="text" id="age" name="age" value=""><br>
+        出生日期:<input type="date" id="birthday" name="birthday" value=""><br>
+        是否喜欢运动:<select id="sports" onchange="sportsChanage()">
+                        <option value="Y">喜欢</option>
+                        <option value="N">不喜欢</option>
+                    </select>
+        <br>
+        <span id="sportList">
+         <input type="checkbox" id="zq" value="1" />足球 <input type="checkbox" id="lq" value="2" />篮球
+            &nbsp;其他:<input type="text" id="qt" />
+        </span>
+        <br>
+        <input type="button" value="js验证" onclick="checkData()" />
+    </form>
+
+<script>
+    function checkData(){
+        //姓名
+        var name = document.getElementById('name');
+        var nameStr = name.value;
+        if (!nameStr) {
+            alert('请输入姓名');
+            return false;
+        }
+        //正则
+        var pattern = new RegExp('^.{2,3}$','g');
+        if (!pattern.test(nameStr)) {
+            alert('姓名必须2-3个字符!');
+            return false;
+        }
+
+        //年龄
+        var age = document.getElementById('age');
+        if (!age.value) {
+            alert('请输入年龄');
+            return false;
+        }
+
+        //正则
+        var pattern2 = new RegExp('^\\d{1,3}$','g');
+        if (!pattern2.test(age.value)) {
+            alert('输入正确的年龄!');
+            return false;
+        }
+        if (age.value > 200) {
+            alert('年龄不能超过200岁');
+            return false;
+        }
+
+        //日期验证
+        var today = new Date();
+        var todayStr = getNowFormatDate(today);
+        var birthday = document.getElementById('birthday');
+        if (!birthday.value) {
+            alert('出生日期不能为空');
+            return false;
+        }
+        if (todayStr.replace(/-/g,'') < birthday.value.replace(/-/g,'')) {
+            alert('出生日期不能晚于当前时间');
+            return false;
+        }
+        return true;
+    }
+
+    function getNowFormatDate(date) {
+        var seperator1 = "-";
+        var seperator2 = ":";
+        var month = date.getMonth() + 1;
+        var strDate = date.getDate();
+        if (month >= 1 && month <= 9) {
+            month = "0" + month;
+        }
+        if (strDate >= 0 && strDate <= 9) {
+            strDate = "0" + strDate;
+        }
+        var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate
+        return currentdate;
+    }
+    //是否喜欢运动 值变化事件
+    function sportsChanage(){
+        var sports = document.getElementById('sports');
+        if (sports.value == 'Y') {
+            document.getElementById('sportList').style.display = '';
+
+        }else {
+            document.getElementById('sportList').style.display = 'none';
+
+            document.getElementById('zq').checked = false;
+            document.getElementById('lq').checked = false;
+            document.getElementById('qt').value = '';
+        }
+    }
+</script>
+</body>
+</html>

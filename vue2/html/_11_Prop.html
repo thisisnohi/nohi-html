@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue2 Prop</title>
+
+    <link href="../static/module/boostrap3/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <script src="../static/module/jquery1.12/jquery-1.12.4.js"></script>
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="../static/module/vue2/vue_v2.5.16.js"></script>
+    <script src="../static/module/boostrap3/js/bootstrap.js"></script>
+
+</head>
+<body>
+<h1>Prop</h1>
+<div id="app1">
+    <input type="date" class="form-control">
+
+    <input type="text" v-model="procc" >
+
+
+    <bootstrap-date-input
+            v-bind:propc="procc"
+            title="this is title"
+            class="date-picker-theme-dark"
+            gender="male"
+    ></bootstrap-date-input>
+</div>
+
+<script>
+    Vue.component('bootstrap-date-input', {
+        inheritAttrs: false,
+        props: {
+            value:Number,
+            title:[String, Number],
+            propc: {
+                type: String,
+                required: true
+            }
+        },
+       //template: '<div :propc="propc" :title="title" ><input type="date"  :value="value" class="form-control" /></div>'
+        template: '<div v-bind="$attrs"><input type="date" :propc="propc" :title="title"  :value="value" class="form-control" /><br></div>'
+    });
+    new Vue({
+        el: '#app1',
+        data: {
+            procc:'who am i ',
+            posts: [
+                {id: 1, title: 'My journey with Vue'},
+                {id: 2, title: 'Blogging with Vue'},
+                {id: 3, title: 'Why Vue is so fun'}
+            ]
+        }
+    });
+
+
+</script>
+</body>
+</html>

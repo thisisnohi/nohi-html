@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+    <!-- Bootstrap -->
+    <link href="../modules/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="../modules/html5shiv.min.js"></script>
+    <script src="../modules/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="../modules/jquery/jquery-1.12.4.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../modules/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+    <style>
+        .row > div {
+            background: #eeeeee;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>警告框</h2>
+    <blockquote>
+        <pre>
+
+        </pre>
+    </blockquote>
+    <div id="alert1" class="alert alert-warning fade in">
+        <button id='alert1' type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong>Holy guacamole!</strong> Best check yo self, you're not looking too good.
+    </div>
+
+    <div class="alert alert-danger fade in">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h4>Oh snap! You got an error!</h4>
+        <p>Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget
+            lacinia
+        <p>
+            <button type="button" class="btn btn-danger">Take this action</button>
+            <button type="button" class="btn btn-success">Or do this</button>
+        </p>
+    </div>
+
+    <div id="alert11" class="alert alert-warning fade in">
+        <button id='alert1' type="button" class="close" onclick="Test()" aria-hidden="true">&times;</button>
+        <strong>Holy guacamole!</strong> Best check yo self, you're not looking too good.
+    </div>
+    <script type="text/javascript">
+        function Test() {
+            $("#alert11").alert('close');
+        }
+    </script>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+</div>
+</body>
+</html>

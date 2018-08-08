@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue2 进入/离开 & 列表过渡</title>
+
+    <link href="../static/module/animate/animate.css" rel="stylesheet" type="text/css">
+
+    <script src="../static/module/velocity/velocity.min.js"></script>
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="../static/module/vue2/vue_v2.5.16.js"></script>
+    <style>
+        .fade-enter-active, .fade-leave-active {
+            transition: opacity .5s;
+        }
+        .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+            opacity: 0;
+        }
+        .fade-enter-to{
+            border:1px solid red;
+        }
+        .fade-leave-to {
+              border:1px solid yellow;
+          }
+
+
+        /* 可以设置不同的进入和离开动画 */
+        /* 设置持续时间和动画函数 */
+        .slide-fade-enter-active {
+            transition: all .3s ease;
+        }
+        .slide-fade-leave-active {
+            transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+        }
+        .slide-fade-enter, .slide-fade-leave-to
+            /* .slide-fade-leave-active for below version 2.1.8 */ {
+            transform: translateX(110px);
+            opacity: 0;
+        }
+
+        .bounce-enter-active {
+            animation: bounce-in .5s;
+        }
+        .bounce-leave-active {
+            animation: bounce-in .5s reverse;
+        }
+        @keyframes bounce-in {
+            0% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.5);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+<h1>进入/离开 & 列表过渡</h1>
+<div id="app1">
+    <button v-on:click="show = !show">
+        Toggle
+    </button>
+    <transition name="fade">
+        <p v-if="show">hello</p>
+    </transition>
+</div>
+
+<h2>CSS 过渡</h2>
+<div id="example-1">
+    <button @click="show = !show">
+        Toggle render
+    </button>
+    <transition name="slide-fade">
+        <p v-if="show">hello</p>
+    </transition>
+</div>
+<h2>CSS 动画</h2>
+<div id="example-2">
+    <button @click="show = !show">Toggle show</button>
+    <transition name="bounce">
+        <p v-if="show">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris facilisis enim libero, at lacinia diam fermentum id. Pellentesque habitant morbi tristique senectus et netus.</p>
+    </transition>
+</div>
+
+<h2>自定义过渡的类名</h2>
+<div id="example-3">
+    <button @click="show = !show">
+        Toggle render
+    </button>
+    <transition
+            name="custom-classes-transition"
+            enter-active-class="animated flip"
+            leave-active-class="animated bounceOutRight"
+    >
+        <p v-if="show">hello</p>
+    </transition>
+</div>
+
+<h2>JavaScript 钩子</h2>
+<div id="example-4">
+    <button @click="show = !show">
+        Toggle
+    </button>
+    <transition
+            v-on:before-enter="beforeEnter"
+            v-on:enter="enter"
+            v-on:leave="leave"
+            v-bind:css="false"
+    >
+        <p v-if="show">
+            Demo
+        </p>
+    </transition>
+</div>
+
+<script>
+    // Vue 根实例
+    new Vue({
+        el: '#app1',
+        data: {
+            show: true
+        }
+    })
+
+    new Vue({
+        el: '#example-1',
+        data: {
+            show: true
+        }
+    })
+
+    new Vue({
+        el: '#example-2',
+        data: {
+            show: true
+        }
+    })
+
+    new Vue({
+        el: '#example-3',
+        data: {
+            show: true
+        }
+    })
+
+    new Vue({
+        el: '#example-4',
+        data: {
+            show: false
+        },
+        methods: {
+            beforeEnter: function (el) {
+                el.style.opacity = 0
+                el.style.transformOrigin = 'left'
+            },
+            enter: function (el, done) {
+                Velocity(el, { opacity: 1, fontSize: '1.4em' }, { duration: 300 })
+                Velocity(el, { fontSize: '1em' }, { complete: done })
+            },
+            leave: function (el, done) {
+                Velocity(el, { translateX: '15px', rotateZ: '50deg' }, { duration: 600 })
+                Velocity(el, { rotateZ: '100deg' }, { loop: 2 })
+                Velocity(el, {
+                    rotateZ: '45deg',
+                    translateY: '30px',
+                    translateX: '30px',
+                    opacity: 0
+                }, { complete: done })
+            }
+        }
+    })
+</script>
+</body>
+</html>

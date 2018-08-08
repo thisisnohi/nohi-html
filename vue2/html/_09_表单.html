@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue2 表单</title>
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="../static/module/vue2/vue_v2.5.16.js"></script>
+</head>
+<body>
+<h1>表单</h1>
+<h2>多个复选框，绑定到同一个数组</h2>
+<div id="app">
+    <input type="checkbox" id="jack1" value="Jack" v-model="checkedNames">
+    <label for="jack">Jack</label>
+    <input type="checkbox" id="john2" value="John" v-model="checkedNames">
+    <label for="john">John</label>
+    <input type="checkbox" id="mike3" value="Mike" v-model="checkedNames">
+    <label for="mike">Mike</label>
+    <br>
+    <span>Checked names: {{ checkedNames }}</span>
+    <br>
+    <input type="radio" id="one" value="One" v-model="picked">
+    <label for="one">One</label>
+    <br>
+    <input type="radio" id="two" value="Two" v-model="picked">
+    <label for="two">Two</label>
+    <br>
+    <span>Picked: {{ picked }}</span>
+</div>
+<h2>修饰符:.lazy .number .trim</h2>
+<h3>.number</h3>
+<input v-model.number="age" type="number">
+<script>
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            checkedNames: []
+            ,picked:''
+        }
+    });
+
+</script>
+</body>
+</html>

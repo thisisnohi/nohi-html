@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue2 处理边界情况</title>
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="../static/module/vue2/vue_v2.5.16.js"></script>
+</head>
+<body>
+<h1>处理边界情况</h1>
+<div id="app1">
+    <p>{{checked}}</p>
+    <navigation-link url="/profile">
+        Your Profile
+        <h1>test</h1>
+    </navigation-link>
+</div>
+
+<script>
+    // Vue 根实例
+    new Vue({
+        data: {
+            foo: 1
+        },
+        computed: {
+            bar: function () { /* ... */ }
+        },
+        methods: {
+            baz: function () { /* ... */ }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head >
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CSS盒子模型</title>
+
+    <style>
+        /*解决div空隙问题*/
+        html, body, div, span, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, img, dl, dt, dd, ul, ol, li, form, fieldset, label, legend, table, capthion, tbody, tfoot, thead, tr, th, td {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 16px;
+            font-family: Helvetica, Tahoma, Arial, "Microsoft YaHei", "微软雅黑", SimSun, "宋体", sans-serif;
+        }
+        div{margin:0;padding:0;font-size: 0;}
+
+        .main{
+            width:1000px;
+            margin:10px auto;
+        }
+        .panel{
+            height: 200px;
+            border:1px solid red;
+            /*box-shadow: 1px 1px 5px #888888;*/
+        }
+        .box{
+            width: 290px;
+            height: 100%;
+            background: blue;
+            display:inline-block;
+        }
+        .box1{
+
+        }
+        .box2{
+            margin-top:5px;
+        }
+    </style>
+</head>
+<body>
+<h1>CSS盒子模型</h1>
+<div class="main">
+
+
+
+    <div class="panel">
+        <div class="box box1">
+            <span>一</span>
+        </div>
+        <div class="box box2">
+            <span>二</span>
+        </div>
+        <div class="box box3">
+            <span>三11</span>
+        </div>
+    </div>
+
+    <div class="panel">
+        <div class="box box1">
+            <span>一</span>
+        </div>
+        <div class="box box2">
+            <span>二</span>
+        </div>
+        <div class="box box3">
+            <span>三</span>
+        </div>
+    </div>
+</div>
+</body>
+</html>

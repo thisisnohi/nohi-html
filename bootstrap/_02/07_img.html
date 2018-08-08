@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+    <!-- Bootstrap -->
+    <link href="../modules/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="../modules/html5shiv.min.js"></script>
+    <script src="../modules/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="../modules/jquery/jquery-1.12.4.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../modules/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+    <style>
+        .row > div {
+            background: royalblue;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<h1>图片</h1>
+<div class="container">
+    <h2>响应式图片</h2>
+    <blockquote>
+        在 Bootstrap 版本 3 中，通过为图片添加.img-responsive 类可以让图片支持响应式布局。其实质是为图片
+        设置了max-width: 100%; 、height: auto; 和display: block; 属性，从而让图片在其父元素中更好的缩放。
+        如果需要让使用了.img-responsive 类的图片水平居中，请使用.center-block 类，不要用.text-center 。
+        请参考助手类章节 了解更多关于.center-block 的用法。
+    </blockquote>
+    <img src="../resources/image/Desert.jpg" class="img-responsive" alt="Responsive image">
+    <h2>图片形状</h2>
+    <div class="row">
+        <div class="col-sm-3">
+            <img src="../resources/image/Desert.jpg" alt="..." class="img-rounded">
+            <img src="../resources/image/Desert.jpg" alt="..." class="img-circle">
+            <img src="../resources/image/Desert.jpg" alt="..." class="img-thumbnail">
+        </div>
+    </div>
+
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+</div>
+</body>
+</html>

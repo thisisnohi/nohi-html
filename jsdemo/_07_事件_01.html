@@ -1,0 +1,49 @@
+<html>
+<head >
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>js事件</title>
+</head>
+<body onclick="bodyonclick()">
+    <h1>js事件</h1>
+
+    <div onclick="divonclick()" style="height: 30px;background: red;">
+        <!--<input type="button" id="btn" value="测试" onclick="btnOnclick()">-->
+
+        <input type="button" id="btn" value="测试" >
+    </div>
+
+    <input type="button" id="btn2" value="测试2" >
+<script>
+    function bodyonclick(){
+        alert('bodyonclick');
+    }
+    function divonclick(){
+        alert('divonclick');
+    }
+    function btnOnclick(){
+        alert('btnOnclick');
+    }
+    var btn = document.getElementById('btn');
+    btn.onclick = function (){
+        alert('btn click;');
+        //阻止事件冒泡
+        //event.stopPropagation();
+    }
+
+    //addEventListener
+    btn.addEventListener('click',function(){
+        alert('btn click again;');
+    },false);
+    btn.addEventListener('click',function(){
+        alert('btn click again1111;');
+    },false);
+
+    //
+
+    var btn2 = document.getElementById('btn2');
+    btn2.attachEvent('onclick',function(){
+        alert('===================');
+    });
+</script>
+</body>
+</html>

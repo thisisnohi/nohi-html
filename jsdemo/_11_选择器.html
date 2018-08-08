@@ -1,0 +1,92 @@
+<html>
+<head >
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CSS</title>
+    <style type="text/css">
+        h2{color:blue}
+        .myClass{color:red}
+        #title{color:yellow}
+
+        div{
+            color:red;
+        }
+        .panel2{
+            border:1px solid;
+            background: yellow;
+        }
+        .panel3{
+            border:1px solid;
+
+        }
+
+        /*交集选择器*/
+        div.classOne{
+            color:aqua;
+        }
+        div#sel{
+            color:green;
+        }
+
+        /*并集选择器*/
+        .class2,#sel2{
+           color:fuchsia;
+            font-size:18px;
+        }
+        /*后代选择器*/
+        .panel3 .class2{
+            color:darkgoldenrod;
+            font-size:18px;
+        }
+        .panel3 .class3{
+            color:blue;
+            font-size:18px;
+        }
+
+        /*特殊选择器*/
+        a{color:red}
+        a:link {color:brown}
+        a:visited {color:gray}
+        a:hover{
+            color:deepskyblue;
+            font-size:18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>基本选择器</h1>
+    <hr>
+    <h2>Html标记选择器</h2>
+    <h2 class="myClass">类别选择器</h2>
+    <h2 id="title">ID选择器</h2>
+
+    <h1>复合选择器</h1>
+    <hr>
+    <div>
+        <label>测试</label>
+        <div>测试二</div>
+
+        <div style="border:1px solid ">
+            <h3>交集</h3>
+            <div class="classOne">测试三</div>
+            <div id="sel">测试四</div>
+        </div>
+
+    </div>
+    <div class="panel2">
+        <h3>并集</h3>
+        <div class="class2">测试三</div>
+        <div id="sel2">测试四</div>
+    </div>
+    <div class="panel3">
+        <h3>后代</h3>
+        <div >后代一</div>
+        <div class="class2">后代二</div>
+        <div class="class3" >后代三</div>
+    </div>
+
+    <h1>特殊选择器</h1>
+    <hr>
+    <a href="http://www.baidu.com" target="_blank">百度</a>
+    <a href="http://www.163.com" target="_blank">网易</a>
+</body>
+</html>

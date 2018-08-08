@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue2 插槽</title>
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="../static/module/vue2/vue_v2.5.16.js"></script>
+</head>
+<body>
+<h1>插槽</h1>
+<div id="app1">
+    <p>{{checked}}</p>
+    <navigation-link url="/profile">
+        Your Profile
+        <h1>test</h1>
+    </navigation-link>
+</div>
+
+<h2>具名插槽</h2>
+<div id="app2">
+    <base-layout>
+        <template slot="header">
+            <h1>Here might be a page title</h1>
+        </template>
+
+        <p>A paragraph for the main content.</p>
+        <p>And another one.</p>
+
+        <template slot="footer">
+            <p>Here's some contact info</p>
+        </template>
+    </base-layout>
+</div>
+
+<h3>作用域插槽</h3>
+<div id="app3">
+    <todo-list v-bind:todos="todos">
+        <!-- 将 `slotProps` 定义为插槽作用域的名字 -->
+        <template slot-scope="slotProps">
+            <!-- 为待办项自定义一个模板，-->
+            <!-- 通过 `slotProps` 定制每个待办项。-->
+            <span v-if="slotProps.todo.isComplete">✓</span>
+            <span v-else="slotProps.todo.isComplete" style="color: red;">X</span>
+            {{ slotProps.todo.content }}
+        </template>
+    </todo-list>
+</div>
+<script>
+    Vue.component('navigation-link', {
+        props: {
+            checked: Boolean
+            ,url:String
+        },
+        template: ' \
+            <a      \
+              v-bind:href="url"  \
+              class="nav-link"   \
+            >   \
+              <slot></slot>  \
+            </a> \
+        '
+    });
+    new Vue({
+        el: '#app1',
+        data: {
+            checked:false
+        }
+    });
+
+    Vue.component('base-layout', {
+        props: {
+            checked: Boolean
+        },
+        template: ' \
+           <div class="container">   \
+              <header>   \
+                <slot name="header"></slot>   \
+              </header>   \
+              <main>   \
+                <slot></slot>   \
+              </main>   \
+              <footer>   \
+                <slot name="footer"></slot>   \
+              </footer>   \
+            </div>   \
+        '
+    });
+    new Vue({
+        el: '#app2',
+        data: {
+            checked:false
+        }
+    });
+
+
+    Vue.component('todo-list', {
+        props:['todos','todo'],
+        template: ' \
+           <ul> \
+              <li \
+                v-for="todo in todos" \
+                v-bind:key="todo.id" \
+              > \
+                <!-- 我们为每个 todo 准备了一个插槽，--> \
+                <!-- 将 `todo` 对象作为一个插槽的 prop 传入。--> \
+                <slot v-bind:todo="todo"> \
+                  <!-- 回退的内容 --> \
+                  {{ todo.title }} \
+                </slot> \
+              </li> \
+            </ul> \
+        '
+    });
+    new Vue({
+        el: '#app3',
+        data: {
+            todos:[
+                 {id:'1',title:'first note',content:'this is first',isComplete:true}
+                ,{id:'2',title:'second note',content:'this is second',isComplete:false}
+                ,{id:'3',title:'thrid note',content:'this is third',isComplete:'1'}
+            ]
+        }
+    });
+</script>
+</body>
+</html>

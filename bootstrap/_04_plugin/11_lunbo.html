@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+    <!-- Bootstrap -->
+    <link href="../modules/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="../modules/html5shiv.min.js"></script>
+    <script src="../modules/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="../modules/jquery/jquery-1.12.4.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../modules/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+    <style>
+        .row > div {
+            background: #eeeeee;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>轮播</h2>
+    <blockquote>
+        <pre>
+         $("").carousel(options) 初始化轮播组件，接受一个可选的 object 类型的 options 参数，并开始幻灯片循环。
+         $('.carousel').carousel({
+            interval: 2000
+         })
+         .carousel('cycle') 从左到右循环各帧。
+         .carousel('pause') 停止轮播。
+         .carousel(number) 将轮播定位到指定的帧上（帧下标以0开始，类似数组）。
+         .carousel('prev') 返回到上一帧。
+         .carousel('next') 转到下一帧。
+
+         data-ride="carousel" 属性用来标记在页面加载之后即开始启动的轮播组件。
+        </pre>
+    </blockquote>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                </ol>
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" style="text-align:center">
+                    <div class="item active">
+                        <img alt="First slide" src="../resources/image/Desert.jpg"></img>
+                        <div class="carousel-caption">
+                            <h4>First Thumbnail label</h4>
+                            <p>
+                                Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget
+                            </p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img alt="Second slide"
+                             img alt="First slide" src="../resources/image/Jellyfish.jpg"></img>
+                        <div class="carousel-caption">
+                            <h4>First Thumbnail label</h4>
+                            <p>这里是说明
+                            </p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img alt="Third slide" src="../resources/image/Tulips.jpg"></img>
+                    </div>
+                </div>
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+</div>
+</body>
+</html>

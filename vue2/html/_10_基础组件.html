@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue2 基础组件</title>
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="../static/module/vue2/vue_v2.5.16.js"></script>
+</head>
+<body>
+<h1>基础组件</h1>
+<div id="app1">
+    <blog-post title="My journey with Vue"></blog-post>
+    <blog-post title="Blogging with Vue"></blog-post>
+    <blog-post title="Why Vue is so fun"></blog-post>
+    <hr>
+    <blog-post
+            v-for="post in posts"
+            v-bind:key="post.id"
+            v-bind:title="post.title"
+    ></blog-post>
+</div>
+
+<h2>通过事件向父级组件发送消息</h2>
+<div id="app2">
+    <div :style="{ fontSize: postFontSize + 'em' }">
+        <blog-post2
+                v-for="post in posts"
+                v-bind:key="post.id"
+                v-bind:post="post"
+                v-on:enlarge-text="postFontSize += 0.1"
+        ></blog-post2>
+    </div>
+</div>
+<h2>使用事件抛出一个值</h2>
+<div id="app3">
+    <div :style="{ fontSize: postFontSize + 'em' }">
+        <blog-post2
+                v-for="post in posts"
+                v-bind:key="post.id"
+                v-bind:post="post"
+                v-on:enlarge-text="enlarge"
+        ></blog-post2>
+    </div>
+</div>
+
+<h2>v-model</h2>
+<div id="app4">
+    <p>{{searchText}}</p>
+    <input v-model="searchText">
+    <input
+            v-bind:value="searchText"
+            v-on:input="searchText = $event.target.value"
+    >
+</div>
+
+
+<script>
+    Vue.component('blog-post', {
+        props: ['title'],
+        template: '<h3>{{ title }}</h3>'
+    });
+    new Vue({
+        el: '#app1',
+        data: {
+            posts: [
+                {id: 1, title: 'My journey with Vue'},
+                {id: 2, title: 'Blogging with Vue'},
+                {id: 3, title: 'Why Vue is so fun'}
+            ]
+        }
+    });
+
+    Vue.component('blog-post2', {
+        props: ['post'],
+        template: '<div class="blog-post">' +
+        '<h3>{{ post.title }}</h3>' +
+        '<button v-on:click="$emit(\'enlarge-text\',0.1)">Enlarge text</button>' +
+        '<div v-html="post.content"></div>' +
+        '</div>'
+    });
+    new Vue({
+        el: '#app2',
+        data: {
+            postFontSize: 1,
+            posts: [
+                {id: 1, title: 'My journey with Vue', content: 'this is one'},
+                {id: 2, title: 'Blogging with Vue', content: 'this is two'},
+                {id: 3, title: 'Why Vue is so fun', content: 'this is three'}
+            ]
+        }
+    });
+    new Vue({
+        el: '#app3',
+        data: {
+            postFontSize: 1,
+            posts: [
+                {id: 1, title: 'My journey with Vue', content: 'this is one'},
+                {id: 2, title: 'Blogging with Vue', content: 'this is two'},
+                {id: 3, title: 'Why Vue is so fun', content: 'this is three'}
+            ]
+        },
+        methods:{
+            enlarge:function(size){
+//                console.info(event);
+                this.postFontSize += size;
+            }
+        }
+    })
+    new Vue({
+        el: '#app4',
+        data: {
+            searchText:''
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+    <!-- Bootstrap -->
+    <link href="../modules/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="../modules/html5shiv.min.js"></script>
+    <script src="../modules/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="../modules/jquery/jquery-1.12.4.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../modules/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+    <style>
+        .row > div {
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<h1>导航</h1>
+<blockquote>
+    Bootstrap 中的导航组件都依赖同一个.nav 类，状态类也是共用的。改变修饰类可以改变样式。<br>
+    如果你在使用导航组件实现导航条功能，务必在 ul 的最外侧的逻辑父元素上添加role="navigation" 属性，
+    或者用一个 nav 元素包裹整个导航组件。不要将 role 属性添加到 ul 上，因为这样可以被辅助设备（残疾人用的）上被识别为一个真正的列表。
+    <br>
+    nav-justified 两端对齐
+</blockquote>
+<div class="container">
+    <h2>标签页</h2>
+    <div class="row">
+        <div class="col-sm-4">
+            <ul class="nav nav-tabs nav-justified">
+                <li role="presentation" class="active"><a href="#">Home</a></li>
+                <li role="presentation"><a href="#">Profile</a></li>
+                <li role="presentation"><a href="#">Messages</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-4">
+            <ul class="nav nav-pills nav-justified">
+                <li role="presentation" class="active"><a href="#">Home</a></li>
+                <li role="presentation"><a href="#">Profile</a></li>
+                <li role="presentation"><a href="#">Messages</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-2">
+            <ul class="nav nav-pills nav-stacked">
+                <li role="presentation" class="active"><a href="#">Home</a></li>
+                <li role="presentation"><a href="#">Profile</a></li>
+                <li role="presentation"><a href="#">Messages</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>添加下拉菜单</h2>
+    <div class="row">
+        <div class="col-sm-4">
+            <ul class="nav nav-tabs nav-justified">
+                <li role="presentation" class="active"><a href="#">Home</a></li>
+                <li role="presentation" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                        Dropdown <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-header">Dropdown header</li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Action</a></li>
+                        <li class="disabled"><a href="#" >Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </li>
+                <li role="presentation"><a href="#">Messages</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-4">
+            <ul class="nav nav-pills nav-justified">
+                <li role="presentation" class="active"><a href="#">Home</a></li>
+                <li role="presentation" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                        Dropdown <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-header">Dropdown header</li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Action</a></li>
+                        <li class="disabled"><a href="#" >Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </li>
+                <li role="presentation"><a href="#">Messages</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-2">
+            <ul class="nav nav-pills nav-stacked">
+                <li role="presentation" class="active"><a href="#">Home</a></li>
+                <li role="presentation" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                        Dropdown <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-header">Dropdown header</li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Action</a></li>
+                        <li class="disabled"><a href="#" >Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </li>
+                <li role="presentation"><a href="#">Messages</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+</div>
+</body>
+</html>

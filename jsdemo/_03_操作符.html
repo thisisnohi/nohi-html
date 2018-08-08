@@ -1,0 +1,50 @@
+<html>
+<head >
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>操作符</title>
+</head>
+<body>
+    <h1>操作符</h1>
+
+    <h3>一元操作符 ++ -- + -</h3>
+    <script type="text/javascript">
+        var age = 30,iq=180;
+        document.write ("age:" + age + ",++age:" + ++age + ";iq=" + iq +",iq++:" + iq++);
+        document.write('<br>');
+        document.write ("-age:" + -age + ",+age:" + +age );
+    </script>
+
+    <h3>布尔操作符 !  &&  || </h3>
+    <script type="text/javascript">
+        var str = '';
+        document.write('str:' + str + ",length:" + str.length);
+        document.writeln('<br>');
+        if (str) {
+            document.write ("if (str) is true");
+        }else {
+            document.write ("if (str) is false");
+        }
+        document.writeln('<br>');
+        if (!str) {
+            document.write ("if (!str) is true");
+            document.writeln('<br>')
+        }
+
+        str = 'this is str';
+        document.write('str:' + str + ",length:" + str.length);
+        document.writeln('<br>');
+        if (str) {
+            document.write ("if (str) is true");
+        }else {
+            document.write ("if (str) is false");
+        }
+        document.writeln('<br>');
+        if (!str) {
+            document.write ("if (!str) is true");
+        }else{
+            document.write ("if (!str) is false");
+        }
+            document.writeln('<br>')
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<html>
+<head >
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>js对象</title>
+</head>
+<body>
+    <h1>js对象</h1>
+
+<script>
+    //工厂模式
+    function createPerson(name,age,job){
+        var o = new Object();
+        o.name = name;
+        o.age = age;
+        o.job = job;
+        o.sayName = function(){
+            alert(this.name);
+        }
+        return o;
+    }
+    var person = createPerson('小白',123,'IT');
+    document.write ("name:" + person.name + ",age:" + person.age); document.write('<br>');
+    person.sayName();
+
+    person = createPerson('小白Two',33,'IT');
+    document.write ("name:" + person.name + ",age:" + person.age); document.write('<br>');
+    person.sayName();
+
+    //构造函数模式
+    function Person(name,age,job){
+        this.name = name;
+        this.age = age;
+        this.job = job;
+        this.sayName = function(){
+            alert(this.name);
+        }
+    }
+    var p1 = new Person('小三',33,'IT');
+    document.write ("name:" + p1.name + ",age:" + p1.age); document.write('<br>');
+    p1.sayName();
+
+
+</script>
+</body>
+</html>
