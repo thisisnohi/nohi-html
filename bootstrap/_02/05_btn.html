@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+    <!-- Bootstrap -->
+    <link href="../modules/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="../modules/html5shiv.min.js"></script>
+    <script src="../modules/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="../modules/jquery/jquery-1.12.4.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../modules/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+    <style>
+        .row > div {
+            background: royalblue;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<h1>按钮</h1>
+<div class="container">
+    <h2>可作为按钮使用的标签或元素</h2>
+    <blockquote>
+        为 a 、button 或input 元素添加按钮类（button class）即可使用 Bootstrap 提供的样式。<br/>
+        虽然按钮类可以应用到a 和button 元素上，但是，导航和导航条组件只支持button元素。<br/>
+        a元素被作为按钮使用，并用于在当前页面触发某些功能 -- 而不是用于链接其他页面或链接当前页面
+        中的其他部分，那么，务必为其设置role="button" 属性。
+    </blockquote>
+    <a class="btn btn-default" href="#" role="button">Link</a>
+    <button class="btn btn-default" type="submit">Button</button>
+    <input class="btn btn-default" type="button" value="Input">
+    <input class="btn btn-default" type="submit" value="Submit">
+    <br/>
+    <h2>预定义样式</h2>
+    <!-- Standard button -->
+    <button type="button" class="btn btn-default">（默认样式）Default</button>
+    <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+    <button type="button" class="btn btn-primary">（首选项）Primary</button>
+    <!-- Indicates a successful or positive action -->
+    <button type="button" class="btn btn-success">（成功）Success</button>
+    <!-- Contextual button for informational alert messages -->
+    <button type="button" class="btn btn-info">（一般信息）Info</button>
+    <!-- Indicates caution should be taken with this action -->
+    <button type="button" class="btn btn-warning">（警告）Warning</button>
+    <!-- Indicates a dangerous or potentially negative action -->
+    <button type="button" class="btn btn-danger">（危险）Danger</button>
+    <!-- Deemphasize a button by making it look like a link while maintaining button behavior -->
+    <button type="button" class="btn btn-link">（链接）Link</button>
+
+    <h3>尺寸</h3>
+    <blockquote>
+        需要让按钮具有不同尺寸吗？使用.btn-lg 、.btn-sm 或.btn-xs 就可以获得不同尺寸的按钮。<br/>
+        通过给按钮添加.btn-block 类可以将其拉伸至父元素 100% 的宽度，而且按钮也变为了块级（block）元素。<br/>
+        由于:active 是伪状态，因此无需额外添加，但是在需要让其表现出同样外观的时候可以添加.active 类。
+
+
+    </blockquote>
+    <p>
+        <button type="button" class="btn btn-primary btn-lg">（大按钮）Large button</button>
+        <button type="button" class="btn btn-default btn-lg">（大按钮）Large button</button>
+    </p>
+    <p>
+        <button type="button" class="btn btn-primary">（默认尺寸）Default button</button>
+        <button type="button" class="btn btn-default">（默认尺寸）Default button</button>
+    </p>
+    <p>
+        <button type="button" class="btn btn-primary btn-sm">（小按钮）Small button</button>
+        <button type="button" class="btn btn-default btn-sm">（小按钮）Small button</button>
+    </p>
+    <p>
+        <button type="button" class="btn btn-primary btn-xs">（超小尺寸）Extra small button</button>
+        <button type="button" class="btn btn-default btn-xs">（超小尺寸）Extra small button</button>
+    </p>
+    <hr/>
+    <button type="button" class="btn btn-primary btn-lg btn-block">（块级元素）Block level button</button>
+    <button type="button" class="btn btn-default btn-lg btn-block">（块级元素）Block level button</button>
+    <hr/>
+    <button type="button" class="btn btn-primary btn-lg active">Primary button</button>
+    <button type="button" class="btn btn-default btn-lg active">Button</button>
+    <a href="#" class="btn btn-primary btn-lg active" role="button" >Primary link</a>
+    <a href="#" class="btn btn-default btn-lg active" role="button">Link</a>
+
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+</div>
+</body>
+</html>

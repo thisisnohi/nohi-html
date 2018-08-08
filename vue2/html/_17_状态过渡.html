@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue2 状态过渡</title>
+
+    <script src="../static/module/TweenMax/TweenMax.min.js"></script>
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="../static/module/vue2/vue_v2.5.16.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+<h1>状态过渡</h1>
+<div id="app1">
+    <input v-focus >
+    <input v-model.number="number" type="number" step="20">
+    <p>{{ animatedNumber }}</p>
+</div>
+
+<script>
+    // Vue 根实例
+    new Vue({
+        el: '#app1',
+        data: {
+            number: 0,
+            tweenedNumber: 0
+        },
+        computed: {
+            animatedNumber: function() {
+                console.info('==tweenedNumber:' + this.tweenedNumber);
+                return this.tweenedNumber.toFixed(0);
+            }
+        },
+        watch: {
+            number: function(newValue) {
+                console.info('==$data:' + this.$data);
+                console.info('==tweenedNumber:' + this.tweenedNumber);
+                console.info('==newValue:' + newValue);
+                TweenLite.to(this.$data, 0.5, { tweenedNumber: newValue });
+            }
+        },// 注册一个全局自定义指令 `v-focus`
+        directives: {
+            focus: {
+                // 指令的定义
+                inserted: function (el) {
+                    el.focus()
+                }
+            }
+        }
+    })
+
+
+</script>
+</body>
+</html>

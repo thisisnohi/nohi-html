@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+    <!-- Bootstrap -->
+    <link href="../modules/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="../modules/html5shiv.min.js"></script>
+    <script src="../modules/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="../modules/jquery/jquery-1.12.4.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../modules/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+    <style>
+        .row > div {
+            background: #eeeeee;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>工具提示</h2>
+    <blockquote>
+        添加data-toggle="tooltip" 的属性来开启它的工具提示功能，然后指定data-placement="left" 工具提示的位置，可以是上下左右（top、bottom、left、right）。<br>
+        选择性加入的功能出于性能方面的考虑，工具提示和弹框组件的 data 属性 api 是选择性加入的，也就是说你必须自己初始化他们。
+        <pre>
+        &lt;script type="text/javascript"&gt; $(function() {
+            $('.tooltip-demo').tooltip({
+                selector: "[data-toggle=tooltip]",
+                container: "body" })
+            $("#testt").tooltip({})
+            $('a').tooltip()
+        }) &lt;/script&gt;
+
+            $().tooltip(options) ——为一组元素应用工具提示。
+            .tooltip('show') ——展示工具提示。
+            $('#element').tooltip('show')
+            .tooltip('hide') ——隐藏工具提示。
+            $('#element').tooltip('hide')
+            .tooltip('toggle') ——展示或隐藏工具提示。
+            $('#element').tooltip('toggle')
+            .tooltip('destroy') ——隐藏并销毁工具提示。
+            $('#element').tooltip('destroy')
+        </pre>
+    </blockquote>
+    <a href="#" data-toggle="tooltip" title="Example tooltip">请悬停在我的上面</a>
+    <a href="#" data-toggle="tooltip" title="first tooltip">Hover over me</a>
+
+    <h4>提示工具（Tooltip）插件 - 锚</h4>
+    这是一个
+    <a href="#" class="tooltip-test" data-toggle="tooltip" title="默认的 Tooltip">默认的 Tooltip</a>.
+    这是一个
+    <a href="#" class="tooltip-test" data-toggle="tooltip" data-placement="left" title="左侧的 Tooltip">左侧的 Tooltip</a>.
+    这是一个
+    <a href="#" data-toggle="tooltip" data-placement="top" title="顶部的 Tooltip">顶部的 Tooltip</a>
+    这是一个
+    <a href="#" data-toggle="tooltip" data-placement="bottom" title="底部的 Tooltip"> 底部的 Tooltip </a>.
+    这是一个
+    <a href="#" data-toggle="tooltip" data-placement="right" title="右侧的 Tooltip"> 右侧的 Tooltip </a>
+
+    <br>
+
+    <h4>提示工具（Tooltip）插件 - 按钮</h4>
+    <button type="button" class="btn btn-default" data-toggle="tooltip" title="默认的 Tooltip">
+        默认的 Tooltip
+    </button>
+    <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="左侧的 Tooltip">
+        左侧的 Tooltip
+    </button>
+    <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="顶部的 Tooltip">
+        顶部的 Tooltip
+    </button>
+    <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="底部的 Tooltip">
+        底部的 Tooltip
+    </button>
+    <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="右侧的 Tooltip">
+        右侧的 Tooltip
+    </button>
+    <script>
+        $(function () {
+            $("[data-toggle='tooltip']").tooltip();
+        });
+    </script>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+</div>
+</body>
+</html>

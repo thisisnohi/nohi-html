@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+    <!-- Bootstrap -->
+    <link href="../modules/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="../modules/html5shiv.min.js"></script>
+    <script src="../modules/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="../modules/jquery/jquery-1.12.4.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../modules/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+    <style>
+        .row > div {
+            background: #dff0d8;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<h1>辅助类</h1>
+<div class="container">
+    <h2>情境文本颜色、情境背景色</h2>
+    <blockquote>
+        在 Bootstrap 版本 3 中，通过为图片添加.img-responsive 类可以让图片支持响应式布局。其实质是为图片
+        设置了max-width: 100%; 、height: auto; 和display: block; 属性，从而让图片在其父元素中更好的缩放。
+        如果需要让使用了.img-responsive 类的图片水平居中，请使用.center-block 类，不要用.text-center 。
+        请参考助手类章节 了解更多关于.center-block 的用法。
+    </blockquote>
+    <p class="text-muted">通过颜色来展示意图，Bootstrap 提供了一组工具类。这些类可以应用于链接，并且在鼠标经过时颜色可以还可
+        以加深，就像默认的链接一样。</p>
+    <p class="text-primary">通过颜色来展示意图，Bootstrap 提供了一组工具类。这些类可以应用于链接，并且在鼠标经过时颜色可以还可
+        以加深，就像默认的链接一样。</p>
+    <p class="text-success">通过颜色来展示意图，Bootstrap 提供了一组工具类。这些类可以应用于链接，并且在鼠标经过时颜色可以还可
+        以加深，就像默认的链接一样。</p>
+    <p class="text-info">通过颜色来展示意图，Bootstrap 提供了一组工具类。这些类可以应用于链接，并且在鼠标经过时颜色可以还可
+        以加深，就像默认的链接一样。</p>
+    <p class="text-warning">通过颜色来展示意图，Bootstrap 提供了一组工具类。这些类可以应用于链接，并且在鼠标经过时颜色可以还可
+        以加深，就像默认的链接一样。</p>
+    <p class="text-danger">通过颜色来展示意图，Bootstrap 提供了一组工具类。这些类可以应用于链接，并且在鼠标经过时颜色可以还可
+        以加深，就像默认的链接一样。</p>
+
+    <p class="bg-primary">和情境文本颜色类一样，使用任意情境背景色类就可以设置元素的背景。链接组件在鼠标经过时颜色会加深，就
+        像上面所讲的情境文本颜色类一样。</p>
+    <p class="bg-success">和情境文本颜色类一样，使用任意情境背景色类就可以设置元素的背景。链接组件在鼠标经过时颜色会加深，就
+像上面所讲的情境文本颜色类一样。</p>
+    <p class="bg-info">和情境文本颜色类一样，使用任意情境背景色类就可以设置元素的背景。链接组件在鼠标经过时颜色会加深，就
+像上面所讲的情境文本颜色类一样。</p>
+    <p class="bg-warning">和情境文本颜色类一样，使用任意情境背景色类就可以设置元素的背景。链接组件在鼠标经过时颜色会加深，就
+像上面所讲的情境文本颜色类一样。</p>
+    <p class="bg-danger">和情境文本颜色类一样，使用任意情境背景色类就可以设置元素的背景。链接组件在鼠标经过时颜色会加深，就
+像上面所讲的情境文本颜色类一样。</p>
+
+    <h2>关闭按钮 三角符号</h2>
+    <div class="row">
+        <div class="col-sm-1">
+            <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="col-sm-1">
+            <span class="caret"></span>
+        </div>
+        <div class="col-sm-1">
+
+        </div>
+    </div>
+
+    <h2>快速浮动、让内容块居中</h2>
+    <blockquote>
+        通过添加一个类，可以将任意元素向左或向右浮动。!important 被用来明确 CSS 样式的优先级。这些类还可以
+        作为 mixin（参见 less 文档） 使用。
+        <strong>不能用于导航条组件中</strong>
+        排列导航条中的组件时可以使用这些工具类： .navbar-left 或.navbar-right 。 参见导航条文档以获取更多
+        信息。
+    </blockquote>
+    <div class="pull-left">pull-leftpull-leftpull-leftpull-leftpull-left</div>
+    <div class="pull-right">pull-rightpull-rightpull-rightpull-rightpull-right</div>
+    <br/>
+    <div class="center-block">center-blockcenter-blockcenter-block</div>
+
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+</div>
+</body>
+</html>

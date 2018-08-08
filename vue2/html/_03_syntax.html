@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue2 模板方法</title>
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="../static/module/vue2/vue_v2.5.16.js"></script>
+</head>
+<body>
+<h1>模板方法</h1>
+<h2>原始 HTML</h2>
+<div id="app">
+    <p>Using mustaches: {{ rawHtml }}</p>
+    <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+</div>
+
+<h2>特性</h2>
+<div id="app2">
+    <div v-bind:id="dynamicId"></div>
+    <button v-bind:disabled="isButtonDisabled_null">null</button>
+    <button v-bind:disabled="isButtonDisabled_undefined ">undefined </button>
+    <button v-bind:disabled="isButtonDisabled_false">false</button>
+    <button v-bind:disabled="isButtonDisabled_disabled ">disabled</button>
+    <button v-bind:disabled="isButtonDisabled_disabled_true">true</button>
+</div>
+
+<H3>修饰符</H3>
+<div id="app3">
+    <button v-on:click.prevent="onClick" v-on:click="click">click</button>
+</div>
+
+<script>
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            rawHtml:'<span style="color:red">this should be red</span>'
+        }
+    });
+
+    var app2 = new Vue({
+        el: '#app2',
+        data: {
+             dynamicId: 'dynamicId1'
+            ,isButtonDisabled_null:null
+            ,isButtonDisabled_undefined:undefined
+            ,isButtonDisabled_false:false
+            ,isButtonDisabled_disabled:'disabled'
+            ,isButtonDisabled_disabled_true:true
+        }
+    });
+
+    var app3 = new Vue({
+        el: '#app3',
+        data: {
+
+        },
+        methods: {
+            click:function(){
+                console.info('..click..')
+            },
+            onClick:function(){
+                console.info('..onClick..')
+            }
+        }
+    });
+</script>
+</body>
+</html>

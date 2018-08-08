@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+    <!-- Bootstrap -->
+    <link href="../modules/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="../modules/html5shiv.min.js"></script>
+    <script src="../modules/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="../modules/jquery/jquery-1.12.4.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../modules/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+    <style>
+        .row > div {
+            background: #eeeeee;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>弹出框</h2>
+    <blockquote>
+        <pre>
+            $().popover(options) 为一组元素初始化弹出框。
+            $('#element').popover('show') 显示弹出框。
+            $('#element').popover('hide') 隐藏弹出框。
+            $('#element').popover('toggle') 展示或隐藏弹出框。
+            $('#element').popover('destroy') 隐藏并销毁弹出框。
+        </pre>
+    </blockquote>
+    <div class="bs-example bs-example-popover">
+        <div class="popover top">
+            <div class="arrow"></div>
+            <h3 class="popover-title">Popover top</h3>
+            <div class="popover-content">
+                <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam
+                    venenatis </p>
+            </div>
+        </div>
+        <div class="popover right">
+            <div class="arrow"></div>
+            <h3 class="popover-title">Popover right</h3>
+            <div class="popover-content">
+                <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam
+                    venenatis </p>
+            </div>
+        </div>
+        <div class="popover bottom">
+            <div class="arrow"></div>
+            <h3 class="popover-title">Popover bottom</h3>
+            <div class="popover-content">
+                <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam
+                    venenatis </p>
+            </div>
+        </div>
+        <div class="popover left">
+            <div class="arrow"></div>
+            <h3 class="popover-title">Popover left</h3>
+            <div class="popover-content">
+                <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam
+                    venenatis </p>
+            </div>
+        </div>
+    </div>
+    <style type="text/css">
+        .bs-example-popover .popover {
+            position: relative;
+            display: block;
+            float: left;
+            width: 240px;
+            margin: 20px;
+        }
+    </style>
+
+
+    <a href="#" data-toggle="popover" title="Example popover">
+        请悬停在我的上面
+    </a>
+
+
+
+    <div class="container" style="padding: 100px 50px 10px;" >
+        <button type="button" class="btn btn-default" title="Popover title"
+                data-container="body" data-toggle="popover" data-placement="left"
+                data-content="左侧的 Popover 中的一些内容">
+            左侧的 Popover
+        </button>
+        <button type="button" class="btn btn-primary" title="Popover title"
+                data-container="body" data-toggle="popover" data-placement="top"
+                data-content="顶部的 Popover 中的一些内容">
+            顶部的 Popover
+        </button>
+        <button type="button" class="btn btn-success" title="Popover title"
+                data-container="body" data-toggle="popover" data-placement="bottom"
+                data-content="底部的 Popover 中的一些内容">
+            底部的 Popover
+        </button>
+        <button type="button" class="btn btn-warning" title="Popover title"
+                data-container="body" data-toggle="popover" data-placement="right"
+                data-content="右侧的 Popover 中的一些内容">
+            右侧的 Popover
+        </button>
+    </div>
+
+    <script>
+        $(function () {
+            $("[data-toggle='popover']").popover();
+            $('[data-toggle=popover]').on('shown.bs.popover', function () {
+                alert(1);
+            })
+        });
+    </script>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+</div>
+</body>
+</html>

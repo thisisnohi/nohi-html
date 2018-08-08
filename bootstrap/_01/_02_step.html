@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+    <!-- Bootstrap -->
+    <link href="../modules/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="../modules/html5shiv.min.js"></script>
+    <script src="../modules/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="../modules/jquery/jquery-1.12.4.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../modules/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <style>
+
+        ul{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            margin: 0;
+            padding: 0;
+        }
+
+        #myTab li{
+            width:25%;
+            float:left;
+            height:40px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #myTab li img{
+            float:left;
+            height: 40px;
+        }
+
+        #myTab li a{
+            color:white;
+            text-align: center;
+            position: relative;
+            display: block;
+            padding: 10px 15px;
+        }
+
+        .blue{
+            background:#0f9af2;
+        }
+        .gray{
+            background: #dfdfdf;
+        }
+        .tabPaneUl{
+            width: 700px;
+            margin: 0 auto;
+            list-style: none;
+        }
+
+        .tabPaneUl li{
+            height: 40px;
+            line-height: 40px;
+        }
+        .tab-pane{
+            margin-top: 50px;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function(){
+
+        });
+
+        //dom操作
+        var domFun={
+
+        };
+
+        //事件操作
+        var eventFun={
+            setStep:function(index){
+                for(var i=2;i<=index;i++){
+                    $("#step"+i+"Li").addClass("blue").removeClass("gray");
+                    $("#step"+i+"Img").attr("src","images/blue_blue.png");
+                }
+                for(var i=index+1;i<=4;i++){
+                    $("#step"+i+"Li").addClass("gray").removeClass("blue");
+                    $("#step"+i+"Img").attr("src","images/gray_gray.png");
+                }
+                $("#step"+(index+1)+"Img").attr("src","images/blue_gray.png");
+            }
+        };
+    </script>
+</head>
+
+<body>
+<div id="page-inner">
+    <div class="row" style="padding:10px;background: #bebebe">
+        <div class="col-md-12">
+            <div class="input-group" style="width: 60%; float: left;font-size: 20px;font-weight: bolder;">
+                创建会议
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top:30px">
+        <ul id="myTab" role="tablist">
+            <li id="step1Li" class="active blue">
+                <a href="#step1"  onclick="eventFun.setStep(1)" role="tab" data-toggle="tab">
+                    1.流程1
+                </a>
+            </li>
+            <li id="step2Li"  class="gray">
+                <img id="step2Img" src="images/blue_gray.png"/>
+                <a href="#step2"  onclick="eventFun.setStep(2)"  role="tab" data-toggle="tab">
+                    2.流程2
+                </a>
+            </li>
+            <li id="step3Li"  class="gray">
+                <img id="step3Img" src="images/gray_gray.png"/>
+                <a href="#step3"  onclick="eventFun.setStep(3)"  role="tab" data-toggle="tab">
+                    3.流程3
+                </a>
+            </li>
+            <li id="step4Li"  class="gray">
+                <img id="step4Img" src="images/gray_gray.png"/>
+                <a href="#step4"  onclick="eventFun.setStep(4)"  role="tab" data-toggle="tab">
+                    4.流程4
+                </a>
+            </li>
+        </ul>
+        <div id="myTabContent" class="tab-content">
+            <div id="step1" class="tab-pane fade active in">
+                1.流程11.流程11.流程11.流程11.流程11.流程1
+                1.流程11.流程11.流程1
+            </div>
+            <div id="step2" class="tab-pane fade">
+                2
+            </div>
+            <div id="step3" class="tab-pane fade">
+                3
+            </div>
+            <div id="step4" class="tab-pane fade">
+                4
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

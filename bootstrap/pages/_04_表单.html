@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link type="text/css" rel="stylesheet" href="../modules/bootstrap/css/bootstrap.css" >
+    <link type="text/css" rel="stylesheet" href="../modules/bootstrap/css/bootstrap-theme.css" >
+
+    <script type="text/javascript" src="../modules/jquery/jquery-1.12.4.js" ></script>
+    <script type="text/javascript" src="../modules/bootstrap/js/bootstrap.js" ></script>
+</head>
+<body>
+<div class="container">
+    <h1>表单</h1>
+    <div class="row">
+        <div class="col-md-8">
+            <form role="form" class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">姓名</label>
+                    <div class="col-sm-6">
+                        <input class="form-control col-sm-4" name="name" placeholder="请输入姓名" >
+                         <span class="help-block">一个较长的帮助文本块，超过一行，需要扩展到下一行。本实例中的帮助文本总共有两行。</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">年龄</label>
+                    <div class="col-sm-6">
+                        <input class="form-control" disabled="disabled" name="name" placeholder="年龄" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">姓名</label>
+                    <div class="col-sm-6">
+                        <select class="form-control">
+                            <option value="male">男</option>
+                            <option value="fmale">女</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group has-success">
+                    <label class="col-sm-2 control-label" for="inputSuccess">输入成功</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputSuccess">
+                    </div>
+                </div>
+                <div class="form-group has-warning">
+                    <label class="col-sm-2 control-label" for="inputWarning">输入警告</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputWarning">
+                    </div>
+                </div>
+                <div class="form-group has-error">
+                    <label class="col-sm-2 control-label" for="inputError">输入错误</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputError">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

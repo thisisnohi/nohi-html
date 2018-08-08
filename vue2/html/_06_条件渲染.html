@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue2 条件渲染.html</title>
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="../static/module/vue2/vue_v2.5.16.js"></script>
+</head>
+<body>
+<h1>条件渲染</h1>
+<h2>用 key 管理可复用的元素</h2>
+<div id="app">
+    <template v-if="loginType === 'username'">
+        <label>Username</label>
+        <input placeholder="Enter your username">
+    </template>
+    <template v-else>
+        <label>Email</label>
+        <input placeholder="Enter your email address">
+    </template>
+
+    <button  v-on:click="change">click</button>
+</div>
+
+<div id="app2">
+    <template v-if="loginType === 'username'">
+        <label>Username</label>
+        <input placeholder="Enter your username" key="username-input">
+    </template>
+    <template v-else>
+        <label>Email</label>
+        <input placeholder="Enter your email address" key="username-email">
+    </template>
+
+    <button  v-on:click="change">click</button>
+</div>
+<div id="app3">
+    <h1 v-show="ok">Hello!</h1>
+</div>
+
+<script>
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            loginType:'username'
+        },
+        methods:{
+            change:function(){
+                this.loginType = this.loginType == 'username' ? 'email' : 'username'
+            }
+        }
+    });
+    var app2 = new Vue({
+        el: '#app2',
+        data: {
+            loginType:'username'
+        },
+        methods:{
+            change:function(){
+                this.loginType = this.loginType == 'username' ? 'email' : 'username'
+            }
+        }
+    });
+    var app3 = new Vue({
+        el: '#app3',
+        data: {
+            ok:false
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue2 事件处理</title>
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="../static/module/vue2/vue_v2.5.16.js"></script>
+</head>
+<body>
+<h1>事件处理</h1>
+<h2>用 key 管理可复用的元素</h2>
+<div id="app">
+    <button v-on:click="counter += 1">Add 1</button>
+    <p>The button above has been clicked {{ counter }} times.</p>
+    <button v-on:click="greet">Greet</button>
+    <button v-on:click="say('hi')">say hi</button>
+</div>
+
+<script>
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            counter: 1
+        },// 在 `methods` 对象中定义方法
+        methods: {
+            greet: function (event) {
+                // `this` 在方法里指向当前 Vue 实例
+                alert('Hello ' + this.counter + '!')
+                // `event` 是原生 DOM 事件
+                if (event) {
+                    alert(event.target.tagName)
+                }
+            },
+            say:function(a,b,c){
+                console.info(a)
+                console.info(b)
+                console.info(c)
+                console.info(event)
+            }
+
+        }
+    });
+    app.say('a');
+
+</script>
+</body>
+</html>

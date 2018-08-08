@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+    <!-- Bootstrap -->
+    <link href="../modules/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="../modules/html5shiv.min.js"></script>
+    <script src="../modules/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="../modules/jquery/jquery-1.12.4.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../modules/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+    <style>
+        .row > div {
+            background: #eeeeee;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>按钮</h2>
+    <blockquote>
+        <pre>
+
+        </pre>
+    </blockquote>
+    <button type="button" id="fat-btn" data-loading-text="正在加载..." class="btn btn-primary"> Loading state</button>
+    <script type="text/javascript">
+        $('#fat-btn').click(function () {
+            var btn = $(this)
+            btn.button('loading')
+            setTimeout(function () {
+                btn.button('reset')
+            }, 3000)
+        })
+    </script>
+
+    <button type="button" class="btn btn-primary" data-toggle="button">Single toggle</button>
+
+    <div class="btn-group" data-toggle="buttons">
+        <label class="btn btn-primary">
+            <input type="checkbox"> Option 1 </label>
+        <label class="btn btn-primary">
+            <input type="checkbox"> Option 2 </label>
+        <label class="btn btn-primary">
+            <input type="checkbox"> Option 3 </label>
+    </div>
+
+    <h2>通过 data 属性来切换按钮的状态</h2>
+    <div class="btn-group" data-toggle="buttons">
+        <label class="btn btn-primary">
+            <input type="radio" name="options" id="option1"> Option 1 </label>
+        <label class="btn btn-primary">
+            <input type="radio" name="options" id="option2"> Option 2 </label>
+        <label class="btn btn-primary">
+            <input type="radio" name="options" id="option3"> Option 3 </label>
+    </div>
+
+
+    <h2>JavaScript 来实现。</h2>
+    <button class="btn btn-primary" id="btn" data-toggle="button">单独开关</button>
+    <a href="javascript:void(0)" class="btn btn-success" onClick="_switch()">切换</a>
+    <script type="text/javascript">
+        function _switch() {
+            $("#btn").button('toggle');
+        }
+    </script>
+
+    <button type="button" class="btn" data-complete-text="finished!" >...</button>
+    <script> $('.btn').button('complete') </script>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+</div>
+</body>
+</html>

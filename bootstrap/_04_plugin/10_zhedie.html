@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+    <!-- Bootstrap -->
+    <link href="../modules/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="../modules/html5shiv.min.js"></script>
+    <script src="../modules/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="../modules/jquery/jquery-1.12.4.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../modules/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+    <style>
+        .row > div {
+            background: #eeeeee;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>折叠</h2>
+    <blockquote>
+        <pre>
+            赋予页面元素可折叠功能。接受一个可选的 object 作为参数。
+            $("#demo").collapse({toggle: false})
+            这样元素在初始化的时候会是展开的。
+            1. collapse('toggle')展示或隐藏一个可折叠的页面元素。
+            2. collapse('show')展示一个可折叠页面元素。
+            3. collapse('hide')隐藏一个可折叠页面元素。
+        </pre>
+    </blockquote>
+
+    <div class="container" style="margin-top:140px;">
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                            Collapsible</a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in">
+                    <div class="panel-body"> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                        richardson
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseTwo"> Collapsible</a>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse">
+                    <div class="panel-body"> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
+                        terry richardson
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseThree"> Collapsible </a>
+                    </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse">
+                    <div class="panel-body"> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
+                        terry richardson
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container" >
+        <button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#demo"> simple collapsible
+        </button>
+        <div id="demo" class="collapse in">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+            richardson
+        </div>
+    </div>
+
+
+    <button type="button" class="btn btn-danger" onClick="Open()">打开</button>
+    <button type="button" class="btn btn-danger" onClick="Hide()">折叠</button>
+    <div id="demo111" class="collapse">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+        richardson
+    </div>
+    <script type="text/javascript"> $(function () {
+        $("#demo111").collapse({
+            toggle: false
+        })
+    })
+    function Open() {
+        $("#demo111").collapse("show");
+    }
+    function Hide() {
+        $("#demo111").collapse("hide");
+    }
+    </script>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+</div>
+</body>
+</html>

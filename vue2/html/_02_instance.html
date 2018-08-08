@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Vue2 实例</title>
 
     <!-- 开发环境版本，包含了有帮助的命令行警告 -->
     <script src="../static/module/vue2/vue_v2.5.16.js"></script>
@@ -19,6 +19,12 @@
     <p>{{ a }}</p>
     <!-- 这里的 `foo` 不会更新！ -->
     <button v-on:click="a = 'aaa'">Change it</button>
+</div>
+
+<h2>生命周期</h2>
+<div id="app3">
+    <p>{{message}}</p>
+    <button v-on:click="destroy">destroy</button>
 </div>
 
 <script>
@@ -47,6 +53,31 @@
         // 这个回调将在 `vm.a` 改变后调用
         console.info('newValue:' + newValue + ",oldValue:" + oldValue)
     })
+
+    var app3 = new Vue({
+        el: '#app3',
+        data: {
+            message:'this is install'
+        },
+        methods: {
+            destroy:function(){
+                this.message = 'updated';
+//                Object.freeze(app3);
+                console.info('-------');
+            }
+        }, created: function () {
+            console.log('created: ' + this.message)
+        }, mounted: function () {
+            console.log('updated: ' + this.message)
+        }, updated: function () {
+
+            console.log('updated: ' + this.message)
+        }, destroyed: function () {
+            console.log('destroyed: ' + this.message)
+        }
+
+        //`mounted`、`updated` 和 `destroyed`。生命周期钩子的 this 上下文指向调用它的 Vue 实例。
+    });
 
 </script>
 </body>

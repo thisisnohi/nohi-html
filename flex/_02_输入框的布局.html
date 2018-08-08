@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html{
+            height: 100%;
+        }
+        body{
+            height:100%;
+            margin:0px;
+            display: flex;
+            flex-flow:column nowrap;
+        }
+
+        .InputAddOn {
+            display: flex;
+        }
+
+        .InputAddOn-field {
+            flex: 1;
+        }
+        .footer{
+            align-self: flex-end;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="InputAddOn">
+        <span class="InputAddOn-item">这是啥</span>
+        <input class="InputAddOn-field">
+        <button class="InputAddOn-item">这又是啥</button>
+    </div>
+    <div class="footer">
+        这是footer
+    </div>
+</body>
+</html>

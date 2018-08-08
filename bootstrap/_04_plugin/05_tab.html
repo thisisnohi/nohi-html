@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+    <!-- Bootstrap -->
+    <link href="../modules/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="../modules/html5shiv.min.js"></script>
+    <script src="../modules/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="../modules/jquery/jquery-1.12.4.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../modules/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+    <style>
+        .row > div {
+            background: #eeeeee;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>标签页</h2>
+    <blockquote>
+        $('#myTab a').click(function (e) {
+        e.preventDefault()
+        $(this).tab('show')
+        }); <br/>
+        //单独激活标签页
+        $('#myTab li:eq(1) a').tab('show')
+    </blockquote>
+    <ul class="nav nav-tabs">
+        <li><a href="#home" data-toggle="tab">Home</a></li>
+        <li><a href="#profile" data-toggle="tab">Profile</a></li>
+        <li><a href="#messages" data-toggle="tab">Messages</a></li>
+        <li><a href="#settings" data-toggle="tab">Settings</a></li>
+        <li class="dropdown">
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Test<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <li><a data-toggle="tab" href="#AAA">@tag</a></li>
+                <li><a data-toggle="tab" href="#BBB">@mag</a></li>
+            </ul>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane" id="home">
+            1..Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt
+        </div>
+        <div class="tab-pane" id="profile">
+            2..profile
+        </div>
+        <div class="tab-pane" id="messages">
+            3..messages
+        </div>
+    </div>
+
+
+    <ul class="nav nav-tabs" id="myTab">
+        <li><a href="#home1">Home</a></li>
+        <li><a href="#profile1">Profile</a></li>
+        <li><a href="#messages1 >Messages</a></li>
+        <li><a href=" #settings1" >Settings</a></li>
+        <li class="dropdown">
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Test<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <li><a href="#AAA">@tag</a></li>
+                <li><a href="#BBB">@mag</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <div class="tab-pane" id="home1">1..Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt
+        </div>
+        <div class="tab-pane" id="profile1">2. profile1profile1profile1profile1</div>
+
+        <div class="tab-pane" id="AAA">AAAAAAAAA</div>
+        <div class="tab-pane" id="BBB">BBBBBBBBBBBBBBBBBBBBB</div>
+    </div>
+    <script type="text/javascript">
+        $('#myTab a').click(function (e) {
+            e.preventDefault()
+            $(this).tab('show')
+        });
+        $('#myTab li:eq(1) a').tab('show');
+        //$('#myTab a:first').tab('show');
+    </script>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+</div>
+</body>
+</html>
