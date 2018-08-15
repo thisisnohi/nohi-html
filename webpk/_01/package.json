@@ -1,0 +1,15 @@
+{
+  "name": "w01",
+  "version": "1.0.0",
+  "description": "this is _01",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^4.16.5"
+  }
+}
