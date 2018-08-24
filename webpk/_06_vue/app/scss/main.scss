@@ -1,0 +1,21 @@
+html {
+  box-sizing: border-box;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  border: 1px solid blue;
+}
+
+.main{
+  border:1px solid ;
+}
+
+h1{
+  border: 1px solid red;
+  color:blue;
+  margin:10px;
+}
