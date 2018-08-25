@@ -21,7 +21,7 @@
 
 <script>
 export default {
-  name: 'app',
+  name: 'markdown',
   data () {
     return {
         msg: 'Welcome to Your Vue.js App'

@@ -1,10 +1,13 @@
-var path = require('path')
+const path = require('path')
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+console.info('aaa:' + path.resolve(__dirname, './build'));
 webpackConfig = {
   entry: {
-    'index' : './src/pages/index.js'
+      'index' : './src/pages/index.js'
+    , 'demo/_01_markdown/markdown' : './src/pages/demo/_01_markdown/markdown.js'
+    // , 'markdown' : './src/pages/markdown.js'
   },
   output: {
     path: path.resolve(__dirname, './build'),
@@ -84,7 +87,11 @@ webpackConfig = {
   },
   resolve: {
     alias: {
-      'vue$': 'vue/dist/vue.esm.js'
+        'src' :  path.resolve(__dirname , '../src')
+      , 'vue$': 'vue/dist/vue.esm.js'
+      , 'bootstrap$': 'bootstrap/dist/css/bootstrap.css'
+      , 'main$': path.resolve(__dirname ,'./src/resources/js/main.js')
+      , 'AAA': path.resolve(__dirname ,'./src/resources/js') //以目录方式引入  import aa from 'AAA/a.js'
     },
     extensions: ['*', '.js', '.vue', '.json']
   },
@@ -101,8 +108,11 @@ webpackConfig = {
     new webpack.ProvidePlugin({
       "$": "jquery",
       "jQuery": "jquery",
-      "window.jQuery": "jquery"
-    })
+      "window.jQuery": "jquery",
+      "bootstrap": "bootstrap/dist/css/bootstrap.css"
+    }),
+    new LodashModuleReplacementPlugin,
+    new webpack.optimize.UglifyJsPlugin
   ]
 }
 

@@ -10,7 +10,8 @@
 * 安装
     vue init webpack-simple webpack-simple-demo
     
-* npm install
+* install dependencies
+  npm install
     
 * 运行: npm  run dev 
 
