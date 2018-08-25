@@ -6,10 +6,10 @@
     * 2）webpack 适合比较大型的项目，有语法检测
     * 3）webpack-simple  我就安装这个，刚刚好
     
-* 安装
+* 安装:
     vue init webpack-simple webpack-simple-demo
     
-* install dependencies
+* install dependencies:
   npm install
     
 * 运行: npm  run dev 
@@ -121,5 +121,22 @@ plugins: [
   import 'bootstrap/dist/js/bootstrap.min.js'
  
 ```
+* 定义别名方式引用模板
+
+```
+ resolve: {
+     alias: {
+         'src' :  path.resolve(__dirname , '../src')
+       , 'vue$': 'vue/dist/vue.esm.js'
+       , 'bootstrap$': 'bootstrap/dist/css/bootstrap.css'
+       , 'main$': path.resolve(__dirname ,'./src/resources/js/main.js')
+       , 'AAA': path.resolve(__dirname ,'./src/resources/js') //以目录方式引入  import aa from 'AAA/a.js'
+     },
+
+  页面引用
+  import 'bootstrap'; //以别名方式引入,参见webpack.config.js  resolve alias
+```
 
 * lodash:  npm i  --save-dev lodash
+  页面引用 const _ = require('lodash');
+  如果.vue文件，即vue template文件使用，则需要在script里加入。如果只在入口文件加入，则.vue模板文件里会找不到“_”
