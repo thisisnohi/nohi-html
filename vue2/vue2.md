@@ -3,6 +3,28 @@ Vue2 笔记
 
 # Vue实例
 
+## 指令
+    指令带有前缀 v-，以表示它们是 Vue 提供的特殊特性
+* v-bind:title="message"
+    * 将这个元素节点的 title 特性和 Vue 实例的 message 属性保持一致
+* 条件与循环
+    * v-if: 控制显示、隐藏
+    * v-for="todo in todos"   
+* 处理用户输入
+   * v-on: 添加一个事件监听器
+        * v-on:click="reverseMessage"
+        * methods:{reverseMessage(){} }
+   * v-model: 表单输入和应用状态之间的双向绑定
+* v-once: 执行一次性地插值
+* v-html: 当html处理
+    * 双大括号会将数据解释为普通文本，而非 HTML 代码。
+    * 为了输出真正的 HTML，你需要使用 v-html 指令
+
+## 生命周期
+* created、mounted、updated 和 destroyed。
+* before
+* 生命周期钩子的 this 上下文指向调用它的 Vue 实例。        
+
 ## 数据与方法
 * Object.freeze(obj) 阻止修改现有的属性
 * v-on:click="foo = 'baz' 执行foo=='bza'脚本 click里也可以是函数
@@ -40,14 +62,10 @@ new Vue({
 // => "a is: 1"
 ```
 * `mounted`、`updated` 和 `destroyed`。生命周期钩子的 this 上下文指向调用它的 Vue 实例。
+ 
+## 模板语法
 
-### 生命周期图示
-
-
-# 模板方法
-
-## 插值
-
+### 插值
 * 文本
 
     * 数据绑定最常见的形式就是使用“Mustache”语法 (双大括号) 的文本插值
@@ -71,7 +89,7 @@ new Vue({
     ```
     
     
-## 指令
+### 指令
 > 指令 (Directives) 是带有 v- 前缀的特殊特性。指令特性的值预期是单个 JavaScript 表达式 (v-for 是例外情况，稍后我们再讨论)。指令的职责是，当表达式的值改变时，将其产生的连带影响，响应式地作用于 DOM
 
 * 参数
@@ -89,13 +107,21 @@ v-on 指令，它用于监听 DOM 事件
 .prevent 修饰符告诉 v-on 指令对于触发的事件调用 event.preventDefault()：
 ```
 
+* 动态参数(从 2.6.0 开始)
+    * <a v-bind:[attributeName]="url"> 
+        * attributeName == href  ==> <a v-bind:href="url"> ... </a>
+    * <a v-on:[eventName]="doSomething">
+        * eventName == focus ==> v-on:focus
+* 修饰符
+    * <form v-on:submit.prevent="onSubmit">...</form>
+
 ## 缩写
 ```
  v-bind 缩写 <a :href="url">...</a>
  v-on 缩写   <a @click="doSomething">...</a>
 ```
 
-# 计算属性和侦听器
+## 计算属性和侦听器
 ## 计算属性
 
 ### 基础例子
@@ -137,6 +163,9 @@ Computed reversed message: "olleH"
      v-bind:class="{ active: isActive, 'text-danger': hasError }">
 </div>
 ```
+### 数组语法
+
+
 ## 绑定内联样式
 * `v-bind:style`
 ```
@@ -193,6 +222,13 @@ data: {
 * `v-if` 是“真正”的条件渲染,`v-if` 也是惰性的 , v-show 就简单得多——不管初始条件是什么，元素总是会被渲染，并且只是简单地基于 CSS 进行切换
 
 
-# 列表渲染
-# 事件处理
-# 表单输入绑定
+## 列表渲染
+* 注意事项
+   * Vue 不能检测以下数组的变动：
+       * 当你利用索引直接设置一个数组项时，例如：vm.items[indexOfItem] = newValue
+       * 当你修改数组的长度时，例如：vm.items.length = newLength 
+   * 使用 vm.$set 实例方法: vm.$set(vm.items, indexOfItem, newValue)
+   * vm.items.splice(newLength)
+
+## 事件处理
+## 表单输入绑定

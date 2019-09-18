@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>事件处理</title>
+  <script src="../static/module/vue2/vue-v2.6.10.js"></script>
+  <style>
+
+  </style>
+</head>
+<body>
+<h3>监听事件</h3>
+<hr/>
+<div id="app">
+  <button @click="count = count + 1">Add 1</button>
+  <p>count: {{ count }}</p>
+</div>
+<div id="app2">
+  <button @click="say('111',$event)">say</button>
+  <p>{{ message }}</p>
+</div>
+<script>
+  var app = new Vue({
+    el: '#app',
+    data: {
+      count: 1
+    }
+  });
+  var app2 = new Vue({
+    el: '#app2',
+    data: {
+      message: 1
+    },
+    methods:{
+      say:function(a,event){
+        this.message++;
+        console.info(a);
+        console.info(event);
+      }
+    }
+  });
+</script>
+</body>
+</html>

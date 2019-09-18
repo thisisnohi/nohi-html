@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="jquery1.12/jquery-1.12.4.js"></script>
+  <script src="zoom/zoom.js"></script>
+  <script src="zoom/drag.js"></script>
+</head>
+<body>
+<div id="main" class="mao-main tupu-shuiying2">
+
+</div>
+<script>
+  window.onload = function () {
+    $solway.zoom({
+      ele: document.getElementById('zoomSvg'), // 缩放的 节点
+      scale: 1,  // 默认缩放倍数   默认 1
+      minScale: 0.1, // 最小倍数   默认0.1
+      rate: 0.1,  // 缩放速率   默认  ±0.1  (传正数)
+
+      // 偏移量， [x偏移量，  y偏移量]
+      // translate: [($('#dragDiv').width() - $('#zoomSvg').width()) / 2, ($('#dragDiv').height() - $('#zoomSvg').height()) / 2]
+    });
+
+    $solway.drag({
+      ele: document.getElementById('main')
+    });
+
+    $solway.zoom({
+      ele: document.getElementById('main'),
+      scale: 1,
+      minScale: 0.1
+    });
+  };
+
+  var stockinfo = [
+    {'name': '王伟', 'stock_per': '33.50%'},
+    {'name': '王勇', 'stock_per': '33.00%'},
+    {'name': '王大勇', 'stock_per': '33.00%'},
+    {'name': '王大勇', 'stock_per': '33.00%'},
+    {'name': '王大勇', 'stock_per': '33.00%'},
+    {'name': '王大勇', 'stock_per': '33.00%'},
+    {'name': '王大勇', 'stock_per': '33.00%'},
+  ];
+
+  function initStockHtml() {
+    var html = '';
+
+    var num = 0;
+    if (stockinfo && stockinfo.length > 0) {
+      num = stockinfo.length;
+      for (var i = 0; i < stockinfo.length; i++) {
+        var item = stockinfo[i];
+        html += stockItemHtml(item, i);
+      }
+
+      html = html
+          // 连接线-股东
+          + '<line class="stock-link" x1="448" y1="222" x2="423" y2="222" style="stroke: rgb(180, 180, 180); stroke-width: 1;"></line>'
+      ;
+      var line_y1_step = 184 - 222;
+      var line_y1 = 184 + line_y1_step * (num - 2);
+      // 坚线
+      html = html + '<line class="stock-link" x1="423" y1="222" x2="423" y2="' + line_y1 + '" style="stroke: rgb(180, 180, 180); stroke-width: 1;"></line>';
+    }
+    return html;
+  }
+
+  /**
+   * 生成每一元素html
+   */
+  function stockItemHtml(stock, num) {
+    var translate_step = 170 - 208;
+    var translate = (208 + num * translate_step);
+    var line_y1_step = 184 - 222;
+    var line_y1 = 184 + line_y1_step * (num - 1);
+
+    var name_len = stock.name.length - 2;
+    var rect_width = 100;
+    var rect_x = -100;
+    var text_x = -85;
+    if (name_len > 0) {
+      rect_width = rect_width + 12 * name_len;
+      rect_x = rect_x - 12 * name_len;
+      text_x = text_x - 12 * name_len;
+    }
+
+
+    var html = ''
+        + '<g class="stock-node" transform="translate(398, ' + translate + ')">'
+        + '  <rect width="' + rect_width + '" height="28" x="' + rect_x + '" rx="4" ry="4" style="fill: rgb(132, 219, 86); opacity: 0.2;"></rect>'
+        + '  <text x="' + text_x + '" y="18" class="stock-name" fill="#333333" style="font-size: 12px; opacity: 1;">' + stock.name + '</text>'
+        + '  <text x="-51" y="18" class="stock-job" fill="#8a8a8a" style="font-size: 12px; opacity: 1;">' + stock.stock_per + '</text>'
+        + '</g>';
+    // 元素连接线
+    html = html + '<line class="stock-link" x1="423" y1="' + line_y1 + '" x2="398" y2="' + line_y1 + '" style="stroke: rgb(180, 180, 180); stroke-width: 1;"></line>';
+    return html;
+  }
+
+  // 高管
+  var gg = [
+    {'name': '王伟', 'zw': '总经理董事'},
+    {'name': '王勇', 'zw': '董事'},
+    {'name': '王勇', 'zw': '董事长'},
+  ];
+
+  function initGGHtml() {
+    var html = '';
+
+    var num = 0;
+    if (gg && gg.length > 0) {
+      num = gg.length;
+      for (var i = 0; i < gg.length; i++) {
+        var item = gg[i];
+        html += ggItemHtml(item, i);
+      }
+
+      html = html
+          // 连接线-股东
+          + '<line class="employ-link" x1="448" y1="293" x2="423" y2="293" style="stroke: rgb(180, 180, 180); stroke-width: 1;"></line>'
+      ;
+      var line_y2_step = 331 - 293;
+      var line_y2 = 331 + line_y2_step * (num - 2);
+      // 坚线
+      html = html + '<line class="employ-link" x1="423" y1="293" x2="423" y2="' + line_y2 + '" style="stroke: rgb(180, 180, 180); stroke-width: 1;"></line>';
+    }
+    return html;
+  }
+
+  /**
+   * 生成每一元素html
+   */
+  function ggItemHtml(item, num) {
+    var translate_step = 317 - 279;
+    var translate = (279 + num * translate_step);
+    var line_y2_step = 331 - 293;
+    var line_y2 = 331 + line_y2_step * (num - 1);
+
+    // 职务长度
+    var zhiwu_len = item.zw.length - 2;
+    var text_zw_x = -39;
+    if (zhiwu_len > 0) {
+      text_zw_x = text_zw_x - 10 * zhiwu_len;
+    }
+
+    var name_len = item.name.length - 2;
+    var rect_width = 88;
+    var rect_x = -88;
+    var text_x = -73;
+    if ((name_len + zhiwu_len) > 0) {
+      rect_width = rect_width + 12 * (name_len + zhiwu_len) ;
+      rect_x = rect_x - 12 * (name_len + zhiwu_len) ;
+      text_x = text_x - 12 * (name_len + zhiwu_len) ;
+    }
+
+
+    var html = ''
+        + '<g class="employ-node" transform="translate(398, ' + translate + ')">'
+        + '  <rect width="' + rect_width + '" height="28" x="' + rect_x + '" rx="4" ry="4" style="fill: rgb(103, 174, 245); opacity: 0.2;"></rect>'
+        + '  <text x="' + text_x + '" y="18" class="employ-name" fill="#333333" style="font-size: 12px; opacity: 1;">' + item.name + '</text>'
+        + '  <text x="' + text_zw_x + '" y="18" class="employ-job" fill="#8a8a8a" style="font-size: 12px; opacity: 1;">' + item.zw+ '</text>'
+        + '</g>';
+    // 元素连接线
+    html = html + '<line class="employ-link" x1="423" y1="' + line_y2 + '" x2="398" y2="' + line_y2 + '" style="stroke: rgb(180, 180, 180); stroke-width: 1;"></line>';
+    return html;
+  }
+
+
+  // 历史股东
+  var lsgd = [
+    {'name': '王伟', 'zw': '总经理董事'},
+    {'name': '王勇', 'zw': '董事'},
+    {'name': '王勇', 'zw': '董事长'},
+    {'name': '王勇', 'zw': '董事长'},
+    {'name': '王勇', 'zw': '董事长'},
+    {'name': '王勇', 'zw': '董事长'},
+  ];
+
+  function initLsgdHtml() {
+    var html = '';
+
+    var num = 0;
+    if (lsgd && lsgd.length > 0) {
+      num = lsgd.length;
+      for (var i = 0; i < lsgd.length; i++) {
+        var item = lsgd[i];
+        html += lsgdItemHtml(item, i);
+      }
+
+      var line_y2_step = 435 - 397;
+      var line_y2 = 397 + line_y2_step * (num - 1);
+      // 坚线
+      html = html + '<line class="hstock-link" x1="448" y1="373" x2="448" y2="' + line_y2 + '" style="stroke: rgb(180, 180, 180); stroke-width: 1;"></line>';
+    }
+    return html;
+  }
+
+  /**
+   * 生成每一元素html
+   */
+  function lsgdItemHtml(item, num) {
+    var translate_step = 421 - 383;
+    var translate = (383 + num * translate_step);
+    var line_y2_step = 435 - 397;
+    var line_y2 = 397 + line_y2_step * (num);
+
+    var html = ''
+        + '      <g class="hstock-node" transform="translate(468, ' + translate + ')">'
+        + '        <rect width="66" height="28" rx="4" ry="4" style="fill: rgb(237, 109, 92); opacity: 0.2;"></rect>'
+        + '        <text x="15" y="18" fill="#333333" style="font-size: 12px; opacity: 1;">' + item.name + '</text>'
+        + '      </g>' ;
+    // 元素连接线
+    html = html + '<line class="hstock-link" x1="448" y1="' + line_y2 + '" x2="468" y2="' + line_y2 + '" style="stroke: rgb(180, 180, 180); stroke-width: 1;"></line>';
+    return html;
+  }
+
+
+  // 对外投资
+  var dwtz = [
+    {'name': '江苏紫米电子技术有限公司', 'zw': '总经理董事'},
+    {'name': '江苏紫米电子技术有限公司', 'zw': '董事'},
+    {'name': '一二三四五六', 'zw': '董事长'},
+  ];
+
+  function initdwtzHtml() {
+    var html = '';
+
+    var num = 0;
+    var list = dwtz;
+    if (list && list.length > 0) {
+      num = list.length;
+      for (var i = 0; i < list.length; i++) {
+        var item = list[i];
+        html += dwtzItemHtml(item, i);
+      }
+
+
+      html = html
+          // 连接线-股东
+          + '<line class="invest-link" x1="' + (width_fix + 884) + '" y1="222" x2="' + (width_fix + 909) + '" y2="222" style="stroke: rgb(180, 180, 180); stroke-width: 1;"></line>'
+      ;
+      var line_y2_step = 184 - 222;
+      var line_y2 = 222 + line_y2_step * (num - 1);
+      // 坚线
+      html = html + '<line class="invest-link" x1="' + (width_fix + 909) + '" y1="222" x2="' + (width_fix + 909) + '" y2="' + line_y2 + '" style="stroke: rgb(180, 180, 180); stroke-width: 1;"></line>'
+    }
+    return html;
+  }
+
+  /**
+   * 生成每一元素html
+   */
+  function dwtzItemHtml(item, num) {
+    var translate_step = 170 - 208;
+    var translate = (208 + num * translate_step);
+    var line_y2_step = 184 - 222;
+    var line_y2 = 222 + line_y2_step * (num );
+
+    var name_len = item.name.length;
+    var rect_width = name_len * 15;
+    if ( rect_width < 110 ) {
+      rect_width = rect_width + 30;
+    }
+
+    var html = ''
+        + '      <g class="invest-node" transform="translate(' + (width_fix + 934) + ', ' + translate + ')">'
+        + '        <rect width="' + rect_width + '" height="28" rx="4" ry="4" style="fill: rgb(158, 119, 242); opacity: 0.2;"></rect>'
+        + '        <text x="15" y="18" fill="#333333" style="font-size: 12px; opacity: 1;">' + item.name + '</text>'
+        + '      </g>';
+    // 元素连接线
+    html = html + '      <line class="invest-link" x1="' + (width_fix + 909) + '" y1="' + line_y2 + '" x2="' + (width_fix + 934) + '" y2="' + line_y2 + '" style="stroke: rgb(180, 180, 180); stroke-width: 1;"></line>';
+    return html;
+  }
+
+  // 分支机构
+  var fzjg = [
+    {'name': '小米科技有限责任公司厦门分公司', 'zw': '总经理董事'},
+    {'name': '小米科技有限责任公司东莞分公司', 'zw': '董事'},
+    {'name': '小米科技有限责任公司重庆分公司', 'zw': '董事长'},
+  ];
+
+  function initfzjgHtml() {
+    var html = '';
+
+    var num = 0;
+    var list = fzjg;
+    if (list && list.length > 0) {
+      num = list.length;
+      for (var i = 0; i < list.length; i++) {
+        var item = list[i];
+        html += fzjgItemHtml(item, i);
+      }
+
+      html = html
+          // 连接线-股东
+          + '<line class="branch-link" x1="' + (width_fix + 884) + '" y1="293" x2="' + (width_fix + 909) + '" y2="293" style="stroke: rgb(180, 180, 180); stroke-width: 1;"></line>'
+      ;
+      var line_y2_step = 331 - 293;
+      var line_y2 = 293 + line_y2_step * (num - 1);
+      // 坚线
+      html = html + '<line class="branch-link" x1="' + (width_fix + 909) + '" y1="293" x2="' + (width_fix + 909) + '" y2="' + line_y2 + '" style="stroke: rgb(180, 180, 180); stroke-width: 1;"></line>'
+    }
+    return html;
+  }
+
+  /**
+   * 生成每一元素html
+   */
+  function fzjgItemHtml(item, num) {
+    var translate_step = 317 - 279;
+    var translate = (279 + num * translate_step);
+    var line_y2_step = 331 - 293;
+    var line_y2 = 293 + line_y2_step * (num );
+
+    var name_len = item.name.length;
+    var rect_width = name_len * 12;
+    rect_width = rect_width + 32;
+
+
+    var html = ''
+        + '<g class="branch-node" transform="translate(' + (width_fix + 934) + ', ' + translate + ')">'
+        + '   <rect width="' + rect_width + '" height="28" rx="4" ry="4" style="fill: rgb(238, 203, 95); opacity: 0.2;"></rect>'
+        + '   <text x="15" y="18" fill="#333333" style="font-size: 12px; opacity: 1;">' + item.name + '</text>'
+        + '</g>';
+    // 元素连接线
+    html = html + '<line class="branch-link" x1="' + (width_fix + 909) + '" y1="' + line_y2 + '" x2="' + (width_fix + 934) + '" y2="' + line_y2 + '" style="stroke: rgb(180, 180, 180); stroke-width: 1;"></line>';
+    return html;
+  }
+
+  // 历史法人
+  var lsfr = [
+    {'name': '张三', 'zw': '总经理董事'},
+    {'name': '李四', 'zw': '董事'},
+    {'name': '功在功', 'zw': '董事长'},
+  ];
+
+  function initlsfrHtml() {
+    var html = '';
+
+    var num = 0;
+    var list = lsfr;
+    if (list && list.length > 0) {
+      num = list.length;
+      for (var i = 0; i < list.length; i++) {
+        var item = list[i];
+        html += lsfrItemHtml(item, i);
+      }
+
+      var line_y2_step = 331 - 293;
+      var line_y2 = 397 + line_y2_step * (num - 1);
+      // 坚线
+      html = html + '<line class="hoper-link" x1="' + (width_fix + 794) + '" y1="373" x2="' + (width_fix + 794) + '" y2="' + line_y2 + '" style="stroke: rgb(180, 180, 180); stroke-width: 1;"></line>'
+    }
+    return html;
+  }
+
+  /**
+   * 生成每一元素html
+   */
+  function lsfrItemHtml(item, num) {
+    var translate_step = 317 - 279;
+    var translate = (383 + num * translate_step);
+    var line_y2_step = 331 - 293;
+    var line_y2 = 397 + line_y2_step * (num );
+
+    var name_len = item.name.length;
+    var rect_width = name_len * 12;
+    rect_width = rect_width + 32;
+
+
+    var html = ''
+        + '<g class="hoper-node" transform="translate(' + ( width_fix + 814 ) + ',' + translate + ')">'
+        + '  <rect width="66" height="28" rx="4" ry="4" style="fill: rgb(237, 109, 92); opacity: 0.2;">'
+        + '  </rect>'
+        + '  <text x="15" y="18" fill="#333333" style="font-size: 12px; opacity: 1;">' + item.name + '</text>'
+        + '</g>';
+    // 元素连接线
+    html = html + '<line class="hoper-link" x1="' + (width_fix + 794) + '" y1="' + line_y2 + '" x2="' + (814 + width_fix) + '" y2="' + line_y2 + '" style="stroke: rgb(180, 180, 180); stroke-width: 1;"></line>';
+    return html;
+  }
+
+  var company_name = '江苏鑫源融信软件科技有限公司';
+  var width_fix = 0;  // 右侧 x 偏移量
+  function initSvg() {
+    var l = company_name.length;
+    var company_rect_width = 50 + l * 12;
+    // 按 十个字计算偏移量
+    width_fix = (l-10) * 12 ;
+
+    var text_x = (company_rect_width - l * 12 ) / 2 - 10;
+
+    var translate_left = 794 + width_fix;
+
+    var width = $('#main').width();
+    var html = ''
+        + '<svg id="zoomSvg" xmlns="http://www.w3.org/2000/svg" width="' + width +'" height="586" style="fill: none; pointer-events: all;">'
+        + '    <g id="zoomSvg_g" transform="translate(225.16359267667417,114.01810898443807) scale(0.6597539553864488)">'
+        + '      <g transform="translate(578,+275.5)">'
+        + '        <rect width="' + company_rect_width + '" height="35" rx="4" ry="4" style="fill: rgb(18, 139, 237); opacity: 0.73;"></rect>'
+        + '        <text x="20" y="20" style="fill: rgb(255, 255, 255); font-size: 13px;">' + company_name + '</text>'
+        + '      </g>'
+
+        // 左侧箭头
+        + '      <g>'
+        + '        <polygon points="0,0 15,0 15,-4.25 20.5,1 15,6.25 15,2 0,2" transform="translate(547.5,293)" style="fill: rgb(18, 139, 237); opacity: 0.73;"></polygon>'
+        + '      </g>'
+        + '      <g>'
+        + '        <polygon points="0,0 15,0 15,-4.25 20.5,1 15,6.25 15,2 0,2" transform="translate(547.5,243),rotate(30)" style="fill: rgb(18, 139, 237); opacity: 0.73;"></polygon>'
+        + '      </g>'
+        + '      <g>'
+        + '        <polygon points="0,0 15,0 15,-4.25 20.5,1 15,6.25 15,2 0,2" transform="translate(547.5,343),rotate(-30)" style="fill: rgb(18, 139, 237); opacity: 0.73;"></polygon>'
+        + '      </g>'
+        // 右侧箭头
+        + '      <g>'
+        + '        <polygon points="0,0 15,0 15,-4.25 20.5,1 15,6.25 15,2 0,2" transform="translate(' + ( 764 + width_fix ) + ',293)" style="fill: rgb(18, 139, 237); opacity: 0.73;"></polygon>'
+        + '      </g>'
+        + '      <g>'
+        + '        <polygon points="0,0 15,0 15,-4.25 20.5,1 15,6.25 15,2 0,2" transform="translate(' + ( 764 + width_fix ) + ',253),rotate(-30)" style="fill: rgb(18, 139, 237); opacity: 0.73;"></polygon>'
+        + '      </g>'
+        + '      <g>'
+        + '        <polygon points="0,0 15,0 15,-4.25 20.5,1 15,6.25 15,2 0,2" transform="translate(' + ( 782 + width_fix ) + ',343),rotate(-150)" style="fill: rgb(18, 139, 237); opacity: 0.73;"></polygon>'
+        + '      </g>'
+
+        + '      <g transform="translate(' + translate_left + ',277.5)">'
+        + '        <rect width="90" height="33" rx="4" ry="4" style="fill: rgb(238, 203, 95); opacity: 0.2;"></rect>'
+        + '        <text x="25" y="20" fill="#333333" style="font-weight: bold; font-size: 12px;">分支机构</text>'
+            ;
+
+        if (fzjg && fzjg.length > 0) {
+          html = html
+              + '<circle onclick="hideOrShow(\'branch\')" cx="12" cy="16" r="6" fill="none" stroke="#666666" stroke-width="0.5"></circle>'
+              + '<path id="branch-path-hide" onclick="hideOrShow(\'branch\')"  d="M7 15 H17 V17 H7 Z" fill="#666666"></path>'
+              + '<path id="branch-path-show" onclick="hideOrShow(\'branch\')" style="display: none;" d="M7 15 H11 V11 H13 V15 H17 V17 H13 V21 H11 V17 H7 Z" fill="#666666"></path> ';
+        }
+
+        html = html
+            + '      </g>'
+            + '      <g transform="translate(' + translate_left + ',208)">'
+            + '        <rect width="90" height="33" rx="4" ry="4" style="fill: rgb(158, 119, 242); opacity: 0.2;"></rect>'
+            + '        <text x="25" y="20" fill="#333333" style="font-weight: bold; font-size: 12px;">对外投资</text>'
+        if (dwtz && dwtz.length > 0) {
+          html = html
+              + '<circle onclick="hideOrShow(\'invest\')" cx="12" cy="16" r="6" fill="none" stroke="#666666" stroke-width="0.5"></circle>'
+              + '<path id="invest-path-hide" onclick="hideOrShow(\'invest\')"  d="M7 15 H17 V17 H7 Z" fill="#666666"></path>'
+              + '<path id="invest-path-show" onclick="hideOrShow(\'invest\')" style="display: none;" d="M7 15 H11 V11 H13 V15 H17 V17 H13 V21 H11 V17 H7 Z" fill="#666666"></path> ';
+        }
+        html = html
+        + '      </g>'
+        + '      <g transform="translate(' + translate_left + ',343)">'
+        + '        <rect width="90" height="33" rx="4" ry="4" style="fill: rgb(237, 109, 92); opacity: 0.2;"></rect>'
+        + '        <text x="25" y="20" fill="#333333" style="font-weight: bold; font-size: 12px;">历史法人</text>'
+        if (lsfr && lsfr.length > 0) {
+          html = html
+              + '<circle onclick="hideOrShow(\'hoper\')" cx="12" cy="16" r="6" fill="none" stroke="#666666" stroke-width="0.5"></circle>'
+              + '<path id="hoper-path-hide" onclick="hideOrShow(\'hoper\')"  d="M7 15 H17 V17 H7 Z" fill="#666666"></path>'
+              + '<path id="hoper-path-show" onclick="hideOrShow(\'hoper\')" style="display: none;" d="M7 15 H11 V11 H13 V15 H17 V17 H13 V21 H11 V17 H7 Z" fill="#666666"></path> ';
+        }
+        html = html
+        + '      </g>'
+        + '      <g transform="translate(448,343)">'
+        + '        <rect width="90" height="33" rx="4" ry="4" style="fill: rgb(237, 109, 92); opacity: 0.2;"></rect>'
+        ;
+        if (lsgd && lsgd.length > 0) {
+          html = html
+              + '<circle onclick="hideOrShow(\'hstock\')" cx="12" cy="16" r="6" fill="none" stroke="#666666" stroke-width="0.5"></circle>'
+              + '<path id="hstock-path-hide" onclick="hideOrShow(\'hstock\')"  d="M7 15 H17 V17 H7 Z" fill="#666666"></path>'
+              + '<path id="hstock-path-show" onclick="hideOrShow(\'hstock\')" style="display: none;" d="M7 15 H11 V11 H13 V15 H17 V17 H13 V21 H11 V17 H7 Z" fill="#666666"></path> ';
+        }
+        html = html
+        + '        <text x="25" y="20" fill="#333333" style="font-weight: bold; font-size: 12px;">历史股东</text>'
+        + '      </g>'
+        + '      <g transform="translate(448,277.5)">'
+        + '        <rect width="90" height="33" rx="4" ry="4" style="fill: rgb(103, 174, 245); opacity: 0.2;"></rect>'
+         ;
+        if (gg && gg.length > 0) {
+          html = html
+              + '<circle onclick="hideOrShow(\'employ\')" cx="12" cy="16" r="6" fill="none" stroke="#666666" stroke-width="0.5"></circle>'
+              + '<path id="employ-path-hide" onclick="hideOrShow(\'employ\')"  d="M7 15 H17 V17 H7 Z" fill="#666666"></path>'
+              + '<path id="employ-path-show" onclick="hideOrShow(\'employ\')" style="display: none;" d="M7 15 H11 V11 H13 V15 H17 V17 H13 V21 H11 V17 H7 Z" fill="#666666"></path> ';
+        }
+        html = html
+        + '        <text x="25" y="20" fill="#333333" style="font-weight: bold; font-size: 12px;">高管</text>'
+        + '      </g>'
+        + '      <g transform="translate(448,208)">'
+        + '        <rect width="90" height="33" rx="4" ry="4" style="fill: rgb(132, 219, 86); opacity: 0.2;"></rect>'
+            ;
+
+    if (stockinfo && stockinfo.length > 0) {
+      html = html
+          + '<circle onclick="hideOrShow(\'stock\')" cx="12" cy="16" r="6" fill="none" stroke="#666666" stroke-width="0.5"></circle>'
+          + '<path id="stock-path-hide" onclick="hideOrShow(\'stock\')"  d="M7 15 H17 V17 H7 Z" fill="#666666"></path>'
+          + '<path id="stock-path-show" onclick="hideOrShow(\'stock\')" style="display: none;" d="M7 15 H11 V11 H13 V15 H17 V17 H13 V21 H11 V17 H7 Z" fill="#666666"></path> ';
+    }
+
+
+    html = html
+        + '        <text x="25" y="20" fill="#333333" style="font-weight: bold; font-size: 12px;">股东</text>'
+        + '      </g>'
+
+        // 添加股东
+        + initStockHtml()
+        // 高管
+        + initGGHtml()
+        // 历史股东
+        + initLsgdHtml()
+        // 对外投资
+        + initdwtzHtml()
+        // 分支机构
+        + initfzjgHtml()
+        // 历史法人
+        + initlsfrHtml()
+        + '    </g>'
+        + '  </svg>'
+    ;
+    $('#main').append(html);
+  }
+
+  initSvg();
+
+  hideOrShowMap={};
+  function hideOrShow(type){
+    var typeShow = hideOrShowMap[type];
+    if (typeof(typeShow) == 'undefined' || typeShow) {
+      $('.' + type + '-node').hide();
+      $('.' + type + '-link').hide();
+      $('#' + type + '-path-hide').hide();
+      $('#' + type + '-path-show').show();
+      hideOrShowMap[type] = false;
+    }else {
+      $('.' + type + '-node').show();
+      $('.' + type + '-link').show();
+      $('#' + type + '-path-hide').show();
+      $('#' + type + '-path-show').hide();
+      hideOrShowMap[type] = true;
+    }
+  }
+
+</script>
+</body>
+</html>

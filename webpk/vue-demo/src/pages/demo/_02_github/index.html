@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue2 Demo : github</title>
+</head>
+<body>
+<div class="container">
+  <template v-for="item in types">
+    <input
+      type="radio"
+      :id="item"
+      :key="item"
+      :value="item"
+      name="typecheck"
+      v-model="current"
+    />{{ item }}
+  </template>
+  <p>current select is : {{ current }}</p>
+  <p>current list : {{ list }}</p>
+  <p>{{ msg }}</p>
+  <ul>
+    <li v-for="item in list">
+        <span>{{ item }}</span>
+    </li>
+  </ul>
+</div>
+</body>
+</html>

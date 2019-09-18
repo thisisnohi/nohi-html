@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>组件基础</title>
+  <script src="../static/module/vue2/vue-v2.6.10.js"></script>
+  <style>
+    .title{
+      color:red;
+    }
+    .red{
+      color: red;
+    }
+    .blue{
+      color:blue;
+    }
+    .yellow{
+      color:yellow;
+    }
+  </style>
+</head>
+<body>
+<h3>通过 Prop 向子组件传递数据</h3>
+<hr/>
+<div id="app">
+  <blog-post title="My journey with Vue"></blog-post>
+  <blog-post title="Blogging with Vue"></blog-post>
+  <blog-post title="Why Vue is so fun"></blog-post>
+</div>
+<hr/>
+<div id="app2">
+  <blog-post
+    v-for="item in posts"
+    :title="item.title"
+  ></blog-post>
+</div>
+<h3 class="title">props传递对象</h3>
+<hr/>
+<div id="app3" :style="{ fontSize : fontSize + 'px' }" >
+  <blog-post2
+          v-for="item in posts"
+          :post="item"
+          v-on:font-large="fontLarge"
+  ></blog-post2>
+</div>
+<h3 class="title">>在组件上使用 v-model</h3>
+<hr/>
+<div id="app4" >
+  <p>{{ value }}</p>
+  <custom-input
+    v-model="value"
+  ></custom-input>
+</div>
+<div id="app5" >
+  <p>{{ prop.value }} == {{ prop.title }}</p>
+  <custom-input2  v-bind:prop="prop"
+  ></custom-input2>
+</div>
+
+
+<script>
+  Vue.component('blog-post', {
+    props: ['title'],
+    template: '<h3>{{ title }}</h3>'
+  });
+  var app = new Vue({
+    el: '#app',
+    data: {
+      toggle: 1,
+      age:1
+    }
+  });
+  var app2 = new Vue({
+    el: '#app2',
+    data: {
+      posts:[
+        { id: 1, title: 'My journey with Vue' },
+        { id: 2, title: 'Blogging with Vue' },
+        { id: 3, title: 'Why Vue is so fun' }
+      ]
+    }
+  });
+
+  // 新post
+  Vue.component('blog-post2', {
+    props: ['post'],
+    template: `
+      <div class="blog-post">
+        <h3>{{ post.title }}</h3>
+        <button v-on:click="$emit('font-large',2)">Lager Text</button>
+        <div v-html="post.content"></div>
+      </div>
+    `
+  });
+  var app3 = new Vue({
+    el: '#app3',
+    data: {
+      posts:[
+        { id: 1, title: 'My journey with Vue', content:'<span class="red">this is 1</span>' },
+        { id: 2, title: 'Blogging with Vue', content:'<span class="blue">this is 1</span>' },
+        { id: 3, title: 'Why Vue is so fun', content:'<span class="yellow">this is 1</span>' }
+      ],
+      fontSize:12
+    },
+    methods:{
+      fontLarge: function (largeSize) {
+        console.info('fontLarge');
+        this.fontSize = this.fontSize + largeSize;
+      }
+    }
+  });
+
+  Vue.component('custom-input', {
+    props: ['value'],
+    template: `
+      <input :value="value" v-on:input="$emit('input', $event.target.value)" >
+    `
+  });
+  var app4 = new Vue({
+    el: '#app4',
+    data: {
+      value:'this'
+    }
+  });
+  Vue.component('custom-input2', {
+    props: ['prop'],
+    template: `
+      <div>
+        <p>{{ prop.title}}:{{prop.value}}</p>
+      <input v-bind:title="prop.title" :value="prop.value" v-on:input="$emit('input', $event.target.value)" >
+      </div>
+    `
+  });
+  var app5 = new Vue({
+    el: '#app5',
+    data: {
+      prop:{
+        value:'this',
+        title:'aaaa'
+      }
+    }
+  });
+</script>
+</body>
+</html>

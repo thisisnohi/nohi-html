@@ -7,6 +7,8 @@ webpackConfig = {
   entry: {
       'index' : './src/pages/index.js'
     , 'demo/_01_markdown/markdown' : './src/pages/demo/_01_markdown/markdown.js'
+    , 'demo/_02_github/index' : './src/pages/demo/_02_github/index.js'
+    , 'demo/index' : './src/pages/demo/index.js'
     // , 'markdown' : './src/pages/markdown.js'
   },
   output: {
@@ -107,6 +109,7 @@ webpackConfig = {
   ,plugins: [
     new webpack.ProvidePlugin({
       "$": "jquery",
+      "_": "lodash",
       "jQuery": "jquery",
       "window.jQuery": "jquery",
       "bootstrap": "bootstrap/dist/css/bootstrap.css"

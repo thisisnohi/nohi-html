@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link href="../../../static/module/select2/css/select2.css" rel="stylesheet">
+    <script src="../../../static/js/jquery-1.12.4.min.js"></script>
+    <script src="../../../static/module/select2/js/select2.js"></script>
+</head>
+<body>
+<h1>jQuery select2</h1>
+<select id="jquery-select2">
+    <option></option>
+</select>
+
+<script>
+    $(document).ready(function(){
+        var data = [
+            {"id": 1, "text": "选项 1（普通选项）"},
+            {"id": 2, "text": "选项 2（默认选中）", "selected": true},
+            {"id": 3, "text": "选项 3（不可选）", "disabled": true}
+        ];
+
+        console.info('value:' + $('#jquery-select2'));
+        console.info($('#jquery-select2'));
+
+        var placeholder = "请选择";
+        $('#jquery-select2').select2({
+            placeholder: placeholder,
+            data: data,
+            language: 'zh-CN'
+        });
+    });
+</script>
+</body>
+</html>

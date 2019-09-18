@@ -4,3 +4,8 @@ html,body {
 .project-title{
   text-align: center;
 }
+
+.row > div {
+  border: 1px solid red;
+  padding: 30px;
+}

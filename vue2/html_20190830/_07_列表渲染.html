@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>列表渲染</title>
+  <script src="../static/module/vue2/vue-v2.6.10.js"></script>
+  <style>
+    .text-danger {
+      color: red;
+    }
+
+    .active {
+      background: yellow;
+    }
+  </style>
+  <script>
+    Vue.component('todo-component', {
+      template: '<div>{{title}}<input v-model="mytag" :placeholder="placeholder" /><button @click="$emit(\'add-new-tag\')" >Add</button></div>'
+      , props: ['title', 'placeholder', 'tag']
+      , data: function () {
+        return {mytag: this.tag}
+      }, watch: {
+        tag(val,oldVal) {
+          this.mytag = val;
+        }
+        , mytag(val,oldVal) {
+          this.$emit("on-mytag-change", val,oldVal);//③组件内对myResult变更后向外部发送事件通知
+        }
+      }
+    });
+    Vue.component('todo-item', {
+      template: '<li><span>{{index}} : {{title}}</span> <button v-bind:index="index" @click="$emit(\'remove\',index)">Remove</button></li>'
+      , props: ['title','index']
+      , methods:{
+        remove:function(index){
+          console.info('revmoe:' + index);
+          this.$emit("removeFun", index);//③组件内对myResult变更后向外部发送事件通知
+        }
+      }
+    });
+  </script>
+</head>
+<body>
+<h3>在 v-for 里使用对象</h3>
+<hr/>
+<div id="app">
+  <div v-for="(value, name, index) in object">
+    {{ index }}. {{ name }}: {{ value }}
+  </div>
+</div>
+
+<h3>维护状态</h3>
+<hr/>
+<div id="app2">
+  <ul v-for="(item, index) in list" :key="item.name">
+    <li>{{ index }}. {{ item.name }}: {{ item.value }}</li>
+  </ul>
+  <span v-for="n in 10">{{ n }} </span>
+</div>
+
+<h3>组件v-for</h3>
+<hr/>
+<div id="app3">
+  <!-- 给组件传值，绑定事件
+    v-on:add-new-tag 必须为小写
+  -->
+  <todo-component
+          v-bind:title="title"
+          v-bind:tag="tag"
+          v-bind:placeholder="placeholder"
+          v-on:add-new-tag="addNewTag"
+          @on-mytag-change="onMytagChange"
+  ></todo-component>
+  <ul>
+    <li
+        is="todo-item"
+        v-for="(todo, index) in todoList"
+        v-bind:key="todo.id"
+        v-bind:index="index"
+        v-bind:title="todo.title"
+        @remove="removeFun"
+    ></li>
+  </ul>
+</div>
+
+
+<script>
+  var app = new Vue({
+    el: '#app',
+    data: {
+      object: {
+        title: 'How to do lists in Vue',
+        author: 'Jane Doe',
+        publishedAt: '2016-04-10'
+      }
+    }
+  });
+  var items = [
+    {
+      name: 'n1',
+      value: 'v1'
+    },
+    {
+      name: 'n2',
+      value: 'v2'
+    }, {
+      name: 'n3',
+      value: 'v3'
+    }
+  ];
+  var app2 = new Vue({
+    el: '#app2',
+    data: {
+      list: items
+    }
+  });
+
+  var app3 = new Vue({
+    el: '#app3',
+    data: {
+      title: 'aaaaaaaaaaaa',
+      placeholder: 'E.g. Feed the cat',
+      tag: '',
+      nextId: 4,
+      todoList: [
+        {
+          id: '1',
+          title: 'first'
+        }
+        , {
+          id: '2',
+          title: '2222'
+        }, {
+          id: '3',
+          title: '4123aaa'
+        }
+      ]
+    }
+    , methods: {
+      onMytagChange: function (newValue, oldValue) {
+        console.info(newValue, oldValue);
+        this.tag = newValue;
+      }
+      , addNewTag: function () {
+        console.info('addNewTag');
+        console.info(this.tag);
+        this.todoList.push({ id: this.nextId++, title: this.tag});
+      },
+      removeFun: function (index) {
+        console.info('removeFun:' + index);
+        this.todoList.splice(index,1)
+      }
+    }
+  });
+
+</script>
+</body>
+</html>

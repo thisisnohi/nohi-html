@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Class与Style绑定</title>
+  <script src="../static/module/vue2/vue-v2.6.10.js"></script>
+  <style>
+    .text-danger {
+      color: red;
+    }
+
+    .active {
+      background: yellow;
+    }
+  </style>
+</head>
+<body>
+<h3>对象语法</h3>
+<hr/>
+<div id="app">
+  <div class="static"
+       v-bind:class="{ active: isActive, 'text-danger': hasError }"
+  >
+    {{ isActive }} {{ hasError }}
+  </div>
+  <div v-bind:class="classObject">{{ classObject }}</div>
+</div>
+
+<h3>数组语法</h3>
+<hr/>
+<div id="app2">
+  <div v-bind:class="[activeClass, errorClass]">
+    activeClass:{{ activeClass }}
+    errorClass:{{ errorClass }}
+  </div>
+  <div v-bind:class="[isActive ? activeClass : '', errorClass]">三元表达式isActive ? activeClass : '', errorClass</div>
+</div>
+
+
+<script>
+  var app = new Vue({
+    el: '#app',
+    data: {
+      isActive: true,
+      hasError: true,
+      classObject: {
+        active: true,
+        'text-danger': true
+      }
+    }
+  });
+  var app2 = new Vue({
+    el: '#app2',
+    data: {
+      activeClass: 'active',
+      errorClass: 'text-danger',
+      isActive: true
+    }
+  });
+</script>
+</body>
+</html>

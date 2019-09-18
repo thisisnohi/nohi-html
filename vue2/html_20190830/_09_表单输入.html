@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>表单输入</title>
+  <script src="../static/module/vue2/vue-v2.6.10.js"></script>
+  <style>
+
+  </style>
+</head>
+<body>
+<h3>值绑定-复选框</h3>
+<hr/>
+<div id="app">
+  <input
+      type="checkbox"
+      v-model="toggle"
+      true-value="yes"
+      false-value="no"
+  >
+  <input v-model.number="age" type="number">
+  <p>toggle: {{ toggle }}</p>
+  <p>age: {{ age }}</p>
+</div>
+
+<script>
+  var app = new Vue({
+    el: '#app',
+    data: {
+      toggle: 1,
+      age:1
+    }
+  });
+
+</script>
+</body>
+</html>

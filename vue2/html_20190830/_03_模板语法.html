@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>模板语法</title>
+  <script src="../static/module/vue2/vue-v2.6.10.js"></script>
+</head>
+<body>
+<h3>v-onc</h3>
+<hr/>
+<div id="app">
+  <p v-once>{{ foo }}</p>
+  <p>{{ text }}</p>
+  <button v-on:click="foo = 'baz';text = 'this is text'">Change it</button>
+</div>
+
+<h3>v-onc</h3>
+<hr/>
+<div id="app2">
+  <p>Using mustaches: {{ rawHtml }} == {{ a }}</p>
+  <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+</div>
+
+<h3>使用 JavaScript 表达式</h3>
+<hr/>
+<div id="app4">
+  {{ number + 1 }}
+  {{ ok ? 'YES' : 'NO' }}
+  {{ message.split('').reverse().join('') }}
+  <div v-bind:id="'list-' + id"></div>
+</div>
+
+<h3>缩写</h3>
+<hr/>
+<div id="app5">
+  <div :id="'list-' + id"></div>
+  <button @click="click" value="click">click</button>
+</div>
+
+<script>
+  var obj = {foo:'this is foo',text:'123'};
+  var app = new Vue({
+    el: '#app',
+    data: obj
+  });
+  var app2 = new Vue({
+    el: '#app2',
+    data: {
+      a:'this is a',
+      rawHtml: '<span style="color: red">This should be red.{{ a }}</span>'
+    }
+  });
+  var app3 = new Vue({
+    el: '#app3',
+    data: {
+      dynamicId:'thisisid',
+      isButtonDisabled: false
+    }
+  });
+  var app4 = new Vue({
+    el: '#app4',
+    data: {
+      number: 1,
+      ok: false,
+      message: 'message'
+    }
+  });
+  var app5 = new Vue({
+    el: '#app5',
+    data: {
+      id: app5,
+      click: function(){
+        alert('click...');
+      }
+    }
+  });
+</script>
+</body>
+</html>

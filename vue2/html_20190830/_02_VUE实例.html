@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VUE实例</title>
+  <script src="../static/module/vue2/vue-v2.6.10.js"></script>
+</head>
+<body>
+<div id="app">
+  <p>{{ foo }}</p>
+  <!-- 这里的 `foo` 不会更新！ -->
+  <button v-on:click="foo = 'baz'">Change it</button>
+</div>
+
+<script>
+  var obj = {
+    foo: 'bar'
+  };
+
+  // Object.freeze(obj);
+
+  new Vue({
+    el: '#app',
+    data: obj ,
+    beforeCreate : function(){
+      console.info('beforeCreate')
+    },
+    created : function(){
+      console.info('create')
+    },
+    beforeMount : function(){
+      console.info('beforeMount')
+    },
+    mounted : function(){
+      console.info('mount')
+    },
+    beforeUpdate : function(){
+      console.info('beforeUpdate')
+    },
+    updated : function(){
+      console.info('update')
+    },
+  });
+</script>
+</body>
+</html>

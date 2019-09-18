@@ -1,4 +1,5 @@
 require('../scss/main.scss');
+const _ = require('lodash');
 
 export default {
     version: "0.1"
