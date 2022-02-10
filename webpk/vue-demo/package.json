@@ -35,7 +35,7 @@
     "jquery": "^1.12.4",
     "lodash": "^4.17.10",
     "lodash-webpack-plugin": "^0.11.5",
-    "node-sass": "^4.5.3",
+    "node-sass": "^7.0.0",
     "popper.js": "^1.14.4",
     "sass-loader": "^6.0.6",
     "vue-loader": "^13.0.5",
