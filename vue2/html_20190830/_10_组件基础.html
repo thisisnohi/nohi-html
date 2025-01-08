@@ -31,6 +31,7 @@
 <div id="app2">
   <blog-post
     v-for="item in posts"
+    :key="item.id"
     :title="item.title"
   ></blog-post>
 </div>
@@ -39,6 +40,7 @@
 <div id="app3" :style="{ fontSize : fontSize + 'px' }" >
   <blog-post2
           v-for="item in posts"
+          :key="item.id"
           :post="item"
           v-on:font-large="fontLarge"
   ></blog-post2>

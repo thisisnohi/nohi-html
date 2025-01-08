@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NOHI-SVG</title>
+</head>
+<body>
+<h2>形状</h2>
+<h3>矩形：rect</h3>
+<p>
+  style="fill:rgb(0,0,255);stroke-width:1;
+  stroke:rgb(0,0,0)" <br>
+  fill 属性定义矩形的填充颜色<br>
+  stroke-width 属性定义矩形边框的宽度<br>
+  stroke 属性定义矩形边框的颜色
+</p>
+<p>
+  x="20" y="20" width="250" height="250"
+  style="fill:blue;stroke:pink;stroke-width:5;
+  fill-opacity:0.1;stroke-opacity:0.9" <br>
+  fill-opacity 属性定义填充颜色透明度（合法的范围是：0 - 1）<br>
+  stroke-opacity 属性定义笔触颜色的透明度（合法的范围是：0 - 1）
+  <br>
+  rx 和 ry 属性可使矩形产生圆角
+</p>
+<svg width="100%">
+  <rect width="300" height="100"
+        style="fill:rgb(0,0,255);stroke-width:1;
+stroke:rgb(0,0,0)"></rect>
+
+  <rect x="20" y="20" width="250" height="250"
+        style="fill:blue;stroke:pink;stroke-width:5;
+fill-opacity:0.4;stroke-opacity:0.9"/>
+  <rect x="220" y="40" width="250" height="250"
+        rx="20" ry="20"
+        style="fill:blue;stroke:pink;stroke-width:5;
+opacity:0.9"/>
+</svg>
+<h3>圆形：circle</h3>
+<p>
+  cx="100" cy="50" r="40" stroke="black"
+  stroke-width="2" fill="red" <br>
+  cx 和 cy 属性定义圆点的 x 和 y 坐标。如果省略 cx 和 cy，圆的中心会被设置为 (0, 0)
+  <br>
+  r 属性定义圆的半径。
+</p>
+<svg>
+  <circle cx="100" cy="50" r="40" stroke="black"
+          stroke-width="2" fill="red">
+  </circle>
+  <circle r="40" stroke="black"
+          stroke-width="2" fill="red">
+  </circle>
+</svg>
+<h3>椭圆：ellipse</h3>
+<p>
+  cx="200" cy="50" rx="100" ry="40"<br>
+  cx 属性定义圆点的 x 坐标
+  cy 属性定义圆点的 y 坐标
+  rx 属性定义水平半径
+  ry 属性定义垂直半径
+</p>
+<svg>
+  <ellipse cx="200" cy="50" rx="100" ry="40"
+           style="fill:rgb(200,100,50);
+stroke:rgb(0,0,100);stroke-width:2"/>
+</svg>
+
+<svg width="100%" height="100%" version="1.1"
+     xmlns="http://www.w3.org/2000/svg">
+
+  <ellipse cx="240" cy="100" rx="220" ry="30"
+           style="fill:purple"/>
+
+  <ellipse cx="220" cy="70" rx="190" ry="20"
+           style="fill:lime"/>
+
+  <ellipse cx="210" cy="45" rx="170" ry="15"
+           style="fill:yellow"/>
+</svg>
+<svg>
+  <ellipse cx="240" cy="100" rx="220" ry="30"
+           style="fill:yellow"/>
+
+  <ellipse cx="220" cy="100" rx="190" ry="20"
+           style="fill:white"/>
+
+</svg>
+<h3>线：line</h3>
+<p>
+  x1="0" y1="0" x2="300" y2="300"<br>
+  x1 属性在 x 轴定义线条的开始
+  y1 属性在 y 轴定义线条的开始
+  x2 属性在 x 轴定义线条的结束
+  y2 属性在 y 轴定义线条的结束
+</p>
+<svg>
+  <line x1="0" y1="0" x2="300" y2="300"
+        style="stroke:rgb(99,99,99);stroke-width:2"/>
+</svg>
+<h3>折线：polyline</h3>
+<p>
+  标签用来创建含有不少于三个边的图形。<br>
+  points="220,100 300,210 170,250"<br>
+  points 属性定义多边形每个角的 x 和 y 坐标
+</p>
+<svg width="100%" height="300">
+  <polygon points="120 0,100 100,210 170,150"
+           style="fill:#cccccc;
+stroke:#000000;stroke-width:1"/>
+  <polygon points="120,100 300,210 170,250 123,234"
+           style="fill:#cccccc;
+stroke:#000000;stroke-width:1"/>
+</svg>
+<h3>多边形：polygon</h3>
+<svg>
+  <polyline points="10,0 0,20 20,20 20,40 40,40 40,80"
+            style="fill:white;stroke:red;stroke-width:2"/>
+</svg>
+<h3>路径：path</h3>
+<p>
+  标签用来定义路径<br>
+  M = moveto <br>
+  L = lineto <br>
+  H = horizontal lineto <br>
+  V = vertical lineto <br>
+  C = curveto <br>
+  S = smooth curveto <br>
+  Q = quadratic Belzier curve <br>
+  T = smooth quadratic Belzier curveto <br>
+  A = elliptical Arc <br>
+  Z = closepath <br>
+  注释：以上所有命令均允许小写字母。大写表示绝对定位，小写表示相对定位。
+</p>
+<svg width="400" height="400">
+  <path d="
+  M250 150
+  L150 350
+  L350 350
+  Z" />
+</svg>
+<svg height="400">
+  <path d="M153 134
+C153 334 151 334 151 334
+C151 339 153 344 156 344
+C164 344 171 339 171 334
+C171 322 164 314 156 314
+C142 314 131 322 131 334
+C131 350 142 364 156 364
+C175 364 191 350 191 334
+C191 311 175 294 156 294
+C131 294 111 311 111 334
+C111 361 131 384 156 384
+C186 384 211 361 211 334
+C211 300 186 274 156 274"
+        style="fill:white;stroke:red;stroke-width:2"/>
+</svg>
+</body>
+</html>
